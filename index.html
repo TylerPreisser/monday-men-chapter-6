@@ -8,373 +8,399 @@
 <meta property="og:title" content="Monday Men — Chapter 6 Research">
 <meta property="og:description" content="A Christian Manifesto: 31 Legal Questions Then vs. Now. 22 resolved, 5 in principle, 4 in flux, 1 resolved against.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --surface-hover: #263348;
-  --surface-2: #334155;
-  --accent: #f59e0b;
-  --accent-dim: rgba(245,158,11,0.12);
-  --accent-glow: rgba(245,158,11,0.25);
-  --green: #22c55e;
-  --green-bg: rgba(34,197,94,0.1);
-  --blue: #3b82f6;
-  --blue-bg: rgba(59,130,246,0.1);
-  --amber: #f59e0b;
-  --amber-bg: rgba(245,158,11,0.1);
-  --red: #ef4444;
-  --red-bg: rgba(239,68,68,0.1);
-  --text: #f8fafc;
-  --text-2: #cbd5e1;
-  --text-3: #94a3b8;
-  --border: #334155;
-  --border-subtle: #1e293b;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-lg: 0 8px 48px rgba(0,0,0,0.6);
-  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+  --bg:           #FAFAF9;
+  --bg-alt:       #FFFFFF;
+  --surface:      #FFFFFF;
+  --text:         #1a1a2e;
+  --text-2:       #4b5563;
+  --text-3:       #9ca3af;
+  --accent:       #b45309;
+  --accent-light: #fef3c7;
+  --accent-mid:   #f59e0b;
+  --green:        #15803d;
+  --green-bg:     #f0fdf4;
+  --green-border: #bbf7d0;
+  --blue:         #1d4ed8;
+  --blue-bg:      #eff6ff;
+  --blue-border:  #bfdbfe;
+  --amber:        #b45309;
+  --amber-bg:     #fffbeb;
+  --amber-border: #fde68a;
+  --red:          #b91c1c;
+  --red-bg:       #fef2f2;
+  --red-border:   #fecaca;
+  --border:       #e5e7eb;
+  --border-mid:   #d1d5db;
+  --body-font:    system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif:        "Playfair Display", Georgia, "Times New Roman", serif;
+  --max-read:     720px;
+  --max-wide:     960px;
 }
 
 html {
   scroll-behavior: smooth;
-  /* Prevent horizontal scrollbar from appearing due to any content overflow */
   overflow-x: hidden;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100svh; /* svh: safe viewport height, avoids iOS Safari toolbar collapse bug */
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%; /* Prevent iOS Safari from auto-scaling fonts on rotation */
+  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden; /* Prevent horizontal scroll from any overflow edge cases */
+  overflow-x: hidden;
+}
+
+/* ── SCROLL PROGRESS ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  z-index: 200;
+  transition: width 0.1s linear;
 }
 
 /* ── HEADER ── */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(15,23,42,0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* iOS Safari requires the -webkit- prefix */
+  background: rgba(250, 250, 249, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
-  /* Safe area inset: accounts for notch/Dynamic Island on iOS devices */
   padding-top: env(safe-area-inset-top);
-  /* GPU compositing layer: prevents iOS Safari backdrop-filter repaint on scroll */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 .header-inner {
-  max-width: 1100px;
+  max-width: var(--max-wide);
   margin: 0 auto;
-  padding: 14px 24px;
+  padding: 16px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
-.header-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 17px;
-  font-weight: 700;
+.header-brand {
+  font-family: var(--body-font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+}
+.header-brand strong {
   color: var(--text);
-  line-height: 1.2;
 }
-.header-title span { color: var(--accent); }
-.progress-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.progress-text {
+.header-read-count {
   font-size: 12px;
   color: var(--text-3);
-  white-space: nowrap;
-}
-.progress-bar-outer {
-  width: 80px;
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.progress-bar-inner {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  width: 0%;
-  transition: width 0.4s ease;
 }
 
 /* ── HERO ── */
 .hero {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 64px 24px 48px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 32px 64px;
   text-align: center;
-  /* Prevent any child from causing horizontal overflow */
-  overflow-x: hidden;
 }
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.hero-inner {
+  max-width: var(--max-read);
+  margin: 0 auto;
+}
+.hero-kicker {
+  display: inline-block;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--accent-glow);
-  padding: 6px 14px;
-  border-radius: 100px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 .hero h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(32px, 5vw, 56px);
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
   font-weight: 800;
   line-height: 1.1;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .hero h1 em {
-  font-style: normal;
+  font-style: italic;
   color: var(--accent);
 }
 .hero-subtitle {
-  font-size: clamp(15px, 2vw, 18px);
+  font-size: 18px;
   color: var(--text-2);
-  max-width: 600px;
-  margin: 0 auto 12px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
-.hero-meta {
-  font-size: 12px;
+.hero-byline {
+  font-size: 13px;
   color: var(--text-3);
   margin-bottom: 48px;
-  /* Allow long metadata lines to wrap on small screens */
-  line-height: 1.8;
+  line-height: 2;
 }
-.hero-meta span { margin: 0 6px; color: var(--border); }
+.hero-byline span {
+  display: inline-block;
+  margin: 0 8px;
+  color: var(--border-mid);
+}
 
-/* ── SCORECARD ── */
-.scorecard {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  max-width: 700px;
-  margin: 0 auto 56px;
+/* ── STAT BAR ── */
+.stat-bar-wrap {
+  margin: 0 auto 8px;
+  max-width: 560px;
 }
-@media (min-width: 640px) {
-  .scorecard { grid-template-columns: repeat(4, 1fr); }
+.stat-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
-.score-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 16px;
-  text-align: center;
-  transition: transform var(--transition), box-shadow var(--transition);
+.stat-bar-seg {
+  height: 100%;
+  transition: opacity 0.2s ease;
 }
-.score-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-.score-number {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 36px;
+.stat-bar-seg.green { background: var(--green); flex: 22; }
+.stat-bar-seg.blue  { background: var(--blue);  flex: 5; }
+.stat-bar-seg.amber { background: var(--amber); flex: 4; }
+.stat-bar-seg.red   { background: var(--red);   flex: 1; }
+
+.stat-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.stat-number {
+  font-family: var(--serif);
+  font-size: 32px;
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 6px;
 }
-.score-label {
+.stat-number.green { color: var(--green); }
+.stat-number.blue  { color: var(--blue); }
+.stat-number.amber { color: var(--amber); }
+.stat-number.red   { color: var(--red); }
+.stat-label {
   font-size: 11px;
-  font-weight: 500;
   color: var(--text-3);
+  text-align: center;
   line-height: 1.3;
 }
-.score-card.green .score-number { color: var(--green); }
-.score-card.green { border-color: rgba(34,197,94,0.2); }
-.score-card.blue .score-number { color: var(--blue); }
-.score-card.blue { border-color: rgba(59,130,246,0.2); }
-.score-card.amber .score-number { color: var(--amber); }
-.score-card.amber { border-color: rgba(245,158,11,0.2); }
-.score-card.red .score-number { color: var(--red); }
-.score-card.red { border-color: rgba(239,68,68,0.2); }
 
-/* ── FILTERS ── */
-.filters-section {
-  max-width: 1100px;
+/* ── FILTER TABS ── */
+.filter-section {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 var(--border);
+}
+.filter-inner {
+  max-width: var(--max-wide);
   margin: 0 auto;
-  padding: 0 24px 32px;
-  overflow-x: hidden;
-}
-.filters-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 12px;
-}
-.filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  gap: 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-.filter-btn {
+.filter-inner::-webkit-scrollbar { display: none; }
+.filter-tab {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 16px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-2);
+  padding: 14px 20px;
+  font-family: var(--body-font);
   font-size: 13px;
   font-weight: 500;
-  font-family: inherit;
+  color: var(--text-3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
-  transition: all var(--transition);
-  min-height: 44px; /* Apple HIG minimum tap target: 44x44px */
-  -webkit-tap-highlight-color: transparent; /* Remove grey tap flash on iOS */
-  touch-action: manipulation; /* Prevent 300ms tap delay on mobile browsers */
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.filter-btn:hover { background: var(--surface-hover); color: var(--text); border-color: var(--surface-2); }
-.filter-btn:active { background: var(--surface-2); color: var(--text); }
-.filter-btn.active { background: var(--accent); color: #0f172a; border-color: var(--accent); font-weight: 600; }
-.filter-btn.active:active { background: #fbbf24; }
-.filter-btn .dot {
-  width: 7px; height: 7px;
+.filter-tab:hover { color: var(--text-2); }
+.filter-tab.active {
+  color: var(--text);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
+.filter-tab .dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.filter-btn .dot.green { background: var(--green); }
-.filter-btn .dot.blue { background: var(--blue); }
-.filter-btn .dot.amber { background: var(--amber); }
-.filter-btn .dot.red { background: var(--red); }
+.filter-tab .dot.green { background: var(--green); }
+.filter-tab .dot.blue  { background: var(--blue); }
+.filter-tab .dot.amber { background: var(--amber); }
+.filter-tab .dot.red   { background: var(--red); }
 
 /* ── MAIN CONTENT ── */
 .main {
-  max-width: 1100px;
+  max-width: var(--max-wide);
   margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 48px 32px 96px;
 }
 
-/* ── QUESTION CARDS ── */
-.question-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 10px;
-  overflow: hidden;
-  transition: border-color var(--transition), box-shadow var(--transition);
+/* ── QUESTION ITEM ── */
+.question-item {
+  border-bottom: 1px solid var(--border);
+  padding: 36px 0;
 }
-.question-card:hover { border-color: var(--surface-2); }
-.question-card.open { border-color: var(--surface-2); box-shadow: var(--shadow); }
-.question-card[data-hidden="true"] { display: none; }
+.question-item:last-child {
+  border-bottom: none;
+}
+.question-item[data-hidden="true"] {
+  display: none;
+}
 
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 24px;
-  cursor: pointer;
+.question-layout {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 24px;
+  align-items: start;
+}
+
+.question-number {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--border-mid);
+  line-height: 1;
+  padding-top: 4px;
+  text-align: right;
   user-select: none;
   -webkit-user-select: none;
-  min-height: 44px; /* Apple HIG minimum tap target */
-  transition: background var(--transition);
-  -webkit-tap-highlight-color: transparent; /* Remove grey tap flash on iOS */
-  touch-action: manipulation; /* Eliminate 300ms tap delay */
 }
-.card-header:hover { background: var(--surface-hover); }
-/* :active state for mobile touch — gives immediate visual feedback on tap */
-.card-header:active { background: var(--surface-2); }
-.question-card.open .card-header { background: var(--surface-hover); }
 
-.q-number {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-3);
-  letter-spacing: 0.05em;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 8px;
-  flex-shrink: 0;
-  margin-top: 1px;
-  font-family: 'Inter', monospace;
+.question-content {
+  min-width: 0;
 }
-.card-main { flex: 1; min-width: 0; }
-.card-question {
-  font-size: 14px;
-  font-weight: 500;
+
+.question-title {
+  font-family: var(--body-font);
+  font-size: 17px;
+  font-weight: 600;
   color: var(--text);
-  line-height: 1.5;
-  margin-bottom: 8px;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
-.card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
-.status-badge {
+.question-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+/* Status pills */
+.status-pill {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 3px 10px;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
   border-radius: 100px;
+  border: 1px solid transparent;
 }
-.status-badge::before {
+.status-pill::before {
   content: '';
-  width: 6px; height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.status-badge.green { background: var(--green-bg); color: var(--green); }
-.status-badge.green::before { background: var(--green); }
-.status-badge.blue { background: var(--blue-bg); color: var(--blue); }
-.status-badge.blue::before { background: var(--blue); }
-.status-badge.amber { background: var(--amber-bg); color: var(--amber); }
-.status-badge.amber::before { background: var(--amber); }
-.status-badge.red { background: var(--red-bg); color: var(--red); }
-.status-badge.red::before { background: var(--red); }
+.status-pill.green { color: var(--green); background: var(--green-bg); border-color: var(--green-border); }
+.status-pill.green::before { background: var(--green); }
+.status-pill.blue  { color: var(--blue);  background: var(--blue-bg);  border-color: var(--blue-border); }
+.status-pill.blue::before  { background: var(--blue); }
+.status-pill.amber { color: var(--amber); background: var(--amber-bg); border-color: var(--amber-border); }
+.status-pill.amber::before { background: var(--amber); }
+.status-pill.red   { color: var(--red);   background: var(--red-bg);   border-color: var(--red-border); }
+.status-pill.red::before   { background: var(--red); }
 
-.chevron {
-  flex-shrink: 0;
-  color: var(--text-3);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-  margin-top: 2px;
+/* Read more toggle */
+.read-more-btn {
+  background: none;
+  border: none;
+  /* Inline padding so the visual text stays flush, but tap target is at least 44px tall */
+  padding: 10px 0;
+  margin: -10px 0; /* negative margin keeps layout unchanged while expanding hit area */
+  font-family: var(--body-font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  /* Ensure minimum 44px touch target height (Apple HIG / Material Design) */
+  min-height: 44px;
 }
-.question-card.open .chevron { transform: rotate(180deg); }
+.read-more-btn:hover { text-decoration: underline; }
+.read-more-btn .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-style: normal;
+  font-size: 11px;
+}
+.question-item.open .read-more-btn .arrow {
+  transform: rotate(180deg);
+}
 
-/* ── CARD BODY ── */
-.card-body {
-  max-height: 0;
+/* ── EXPANDED BODY ── */
+.question-body {
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.question-card.open .card-body { max-height: 4000px; }
-
-.card-body-inner {
-  padding: 0 24px 24px;
-  border-top: 1px solid var(--border);
+.question-item.open .question-body {
+  max-height: 6000px;
+}
+.question-body-inner {
   padding-top: 24px;
+  /* Hard guard against any child element causing horizontal scroll */
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
-.section-label {
+/* Section labels */
+.body-section {
+  margin-bottom: 20px;
+}
+.body-section-label {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -383,417 +409,438 @@ body {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
-.section-label::after {
+.body-section-label::after {
   content: '';
   flex: 1;
   height: 1px;
   background: var(--border);
+  max-width: 200px;
 }
 
-.content-block {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 16px 18px;
+/* Body text — 16px is the mobile minimum; also good on desktop */
+.body-text p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-2);
   margin-bottom: 12px;
 }
-.content-block p {
-  font-size: 13.5px;
-  line-height: 1.7;
-  color: var(--text-2);
-}
-.content-block p + p { margin-top: 10px; }
-.content-block strong { color: var(--text); font-weight: 600; }
-.content-block .caveat {
+.body-text p:last-child { margin-bottom: 0; }
+.body-text strong { color: var(--text); font-weight: 600; }
+.body-text em { font-style: italic; }
+
+/* Caveat box */
+.caveat {
   display: flex;
   gap: 10px;
-  margin-top: 12px;
-  padding: 10px 14px;
+  margin-top: 14px;
+  padding: 12px 16px;
   background: var(--amber-bg);
-  border: 1px solid rgba(245,158,11,0.2);
-  border-radius: 6px;
-  font-size: 12.5px;
-  color: var(--text-2);
-}
-.content-block .caveat::before { content: '⚠'; font-size: 13px; flex-shrink: 0; }
-
-/* State tiers */
-.state-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  padding: 12px 18px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  margin-bottom: 8px;
-  transition: background var(--transition);
-  min-height: 44px; /* Apple HIG minimum tap target */
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-.state-toggle:hover { background: var(--surface-hover); }
-/* :active for mobile touch feedback */
-.state-toggle:active { background: var(--surface-2); }
-.state-toggle-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.state-toggle-label .icon { font-size: 14px; }
-.state-chevron {
-  color: var(--text-3);
-  transition: transform 0.25s ease;
-  flex-shrink: 0;
-}
-.state-toggle.open .state-chevron { transform: rotate(180deg); }
-.state-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
-  margin-bottom: 8px;
-}
-.state-toggle.open + .state-body { max-height: 2000px; }
-.state-body-inner {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-top: none;
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  padding: 14px 18px;
-}
-.state-tier {
-  margin-bottom: 14px;
-}
-.state-tier:last-child { margin-bottom: 0; }
-.tier-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 6px;
-}
-.state-list {
-  font-size: 13px;
+  border-left: 3px solid var(--amber-mid, #f59e0b);
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
   color: var(--text-2);
   line-height: 1.6;
 }
-.tier-note {
-  font-size: 12.5px;
-  color: var(--text-3);
-  font-style: italic;
-  margin-top: 4px;
+.caveat-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 14px;
+  margin-top: 1px;
 }
 
-/* Cases + Sources */
-.cases-grid {
+/* State accordion */
+.state-accordion {
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.state-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* min-height ensures 44px touch target on mobile */
+  min-height: 44px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: none;
+  cursor: pointer;
+  font-family: var(--body-font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: background 0.15s ease;
+}
+.state-accordion-trigger:hover { background: #f3f4f6; }
+.state-accordion-trigger .chevron-icon {
+  flex-shrink: 0;
+  color: var(--text-3);
+  transition: transform 0.2s ease;
+}
+.state-accordion.open .state-accordion-trigger .chevron-icon {
+  transform: rotate(180deg);
+}
+.state-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.state-accordion.open .state-accordion-body {
+  max-height: 2000px;
+}
+.state-accordion-inner {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+.state-tier {
+  margin-bottom: 16px;
+}
+.state-tier:last-child { margin-bottom: 0; }
+.tier-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 5px;
+}
+.tier-states {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+.tier-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--amber-bg);
+  border-left: 2px solid var(--accent-mid);
+  font-size: 14px;
+  color: var(--text-2);
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Cases */
+.cases-list {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 12px;
+  /* Prevent any tag from blowing out the container */
+  max-width: 100%;
 }
-.case-pill {
-  font-size: 11.5px;
+.case-tag {
+  font-size: 12px;
   color: var(--blue);
   background: var(--blue-bg);
-  border: 1px solid rgba(59,130,246,0.2);
-  padding: 4px 10px;
-  border-radius: 100px;
+  border: 1px solid var(--blue-border);
+  padding: 3px 10px;
+  border-radius: 4px;
   font-weight: 500;
+  /* Long case names must wrap, not overflow */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
-.sources-list {
-  font-size: 12px;
+
+/* Sources */
+.sources-row {
+  font-size: 13px;
   color: var(--text-3);
-  list-style: none;
+  font-style: italic;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px 14px;
+  /* Prevent any single long source string from causing horizontal overflow */
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
-.sources-list li::before { content: '↗ '; }
+.sources-row span::before { content: '↗ '; }
 
-/* ── TIMELINE ── */
+/* ── TIMELINE SECTION ── */
 .timeline-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px 80px;
-  /* Contain timeline items — prevents dot pseudo-elements from causing overflow */
-  overflow-x: hidden;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 64px 32px;
 }
-.section-heading {
-  font-family: 'Playfair Display', Georgia, serif;
+.timeline-inner {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+}
+.section-headline {
+  font-family: var(--serif);
   font-size: 28px;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 32px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
+  margin-bottom: 40px;
 }
 .timeline {
   position: relative;
-  padding-left: 28px;
+  padding-left: 32px;
 }
 .timeline::before {
   content: '';
   position: absolute;
   left: 7px;
-  top: 6px;
-  bottom: 6px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
 }
 .timeline-item {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 16px;
+  grid-template-columns: 52px 1fr;
+  gap: 20px;
   align-items: baseline;
 }
+.timeline-item:last-child { margin-bottom: 0; }
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -25px;
-  top: 7px;
-  width: 10px;
-  height: 10px;
+  left: -28px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 0 2px var(--accent);
+  background: var(--bg-alt);
+  border: 2px solid var(--accent);
 }
 .timeline-year {
   font-size: 12px;
   font-weight: 700;
   color: var(--accent);
-  font-family: 'Inter', monospace;
+  letter-spacing: 0.05em;
 }
 .timeline-desc {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-2);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 .timeline-desc strong { color: var(--text); font-weight: 600; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 40px 32px;
+  text-align: center;
+}
+.footer-inner {
+  max-width: var(--max-read);
+  margin: 0 auto;
+}
+footer p {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.8;
+}
+footer strong { color: var(--text-2); font-weight: 600; }
+footer .disclaimer {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-3);
+}
 
 /* ── BACK TO TOP ── */
 .back-to-top {
   position: fixed;
-  /* Safe area insets: ensures button clears the home indicator on iPhone X+ */
-  bottom: calc(20px + env(safe-area-inset-bottom));
-  right: calc(20px + env(safe-area-inset-right));
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: calc(24px + env(safe-area-inset-right));
+  /* 44px minimum touch target (Apple HIG) */
   width: 44px;
   height: 44px;
-  background: var(--accent);
-  color: #0f172a;
+  background: var(--text);
+  color: var(--bg-alt);
   border: none;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  box-shadow: var(--shadow);
+  font-size: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
   z-index: 90;
+  pointer-events: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  /* Prevent the button from being too close to the last card on mobile */
-  pointer-events: none;
 }
 .back-to-top.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-.back-to-top:hover { background: #fbbf24; }
-
-/* ── FOOTER ── */
-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 32px 24px;
-  text-align: center;
-}
-footer p {
-  font-size: 13px;
-  color: var(--text-3);
-  line-height: 1.7;
-}
-footer strong { color: var(--text-2); }
+.back-to-top:hover { background: var(--accent); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  /* Header: stack title above progress bar, full-width progress */
   .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 12px 16px;
-    /* Add horizontal safe area insets for notched devices in landscape */
+    padding: 12px 20px;
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+  }
+  .hero {
+    padding: 48px 20px 48px;
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+  }
+  .hero h1 { font-size: clamp(30px, 8vw, 42px); }
+  .hero-subtitle { font-size: 16px; }
+  .hero-byline span { display: none; }
+  .stat-row { gap: 20px; }
+  .stat-number { font-size: 26px; }
+
+  /* Filter: remove section-level horizontal padding so the scrollable strip
+     reaches edge-to-edge; first/last tabs get padding via CSS instead */
+  .filter-section { padding: 0; }
+  .filter-inner {
     padding-left: calc(16px + env(safe-area-inset-left));
     padding-right: calc(16px + env(safe-area-inset-right));
   }
-  .header-title { font-size: 15px; }
-  .progress-wrap { width: 100%; }
-  .progress-bar-outer { flex: 1; }
-  .progress-text { font-size: 11px; }
-
-  /* Hero: tighter padding, hero-meta wraps cleanly */
-  .hero { padding: 36px 16px 32px; }
-  .hero-eyebrow { font-size: 10px; }
-  .hero-meta {
-    font-size: 11px;
-    /* Allow pipe separators to wrap naturally without overflow */
-    word-break: break-word;
-  }
-  /* Hide pipe separators on very small screens to prevent awkward wrapping */
-  .hero-meta span { display: none; }
-
-  /* Scorecard: 2 columns already handled above 640, keep tight on mobile */
-  .scorecard { gap: 8px; }
-  .score-card { padding: 16px 12px; }
-  .score-number { font-size: 28px; }
-  .score-label { font-size: 11px; }
-
-  /* Filters: full-width container, buttons wrap with proper tap targets */
-  .filters-section {
-    padding: 0 16px 24px;
-    padding-left: calc(16px + env(safe-area-inset-left));
-    padding-right: calc(16px + env(safe-area-inset-right));
-  }
-  .filter-btn {
+  /* Ensure filter tabs meet 44px touch target on mobile */
+  .filter-tab {
+    padding: 14px 14px;
     font-size: 13px;
-    padding: 10px 14px;
+    min-height: 44px;
   }
 
-  /* Main content: safe horizontal padding */
   .main {
-    padding: 0 16px 80px;
-    padding-left: calc(16px + env(safe-area-inset-left));
-    padding-right: calc(16px + env(safe-area-inset-right));
-    /* Extra bottom padding so back-to-top never obscures last card */
+    padding: 32px 20px 80px;
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
     padding-bottom: calc(80px + env(safe-area-inset-bottom));
   }
 
-  /* Card headers: compact but still 44px touch target */
-  .card-header {
-    padding: 14px 16px;
-    gap: 10px;
+  /* Stack number above title on narrow screens — 2-col grid won't fit at 320-428px */
+  .question-layout {
+    display: block;
   }
-  /* Hide Q-number badge on mobile — wastes horizontal space */
-  .q-number { display: none; }
+  .question-number {
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    line-height: 1;
+    padding-top: 0;
+    padding-bottom: 6px;
+    color: var(--border-mid);
+    /* Decorative number sits flush left as a small label above the title */
+  }
+  .question-content {
+    display: block;
+    min-width: 0;
+  }
+  /* Bump up body text to 16px minimum on mobile for readability */
+  .question-title { font-size: 16px; }
+  .body-text p { font-size: 16px; }
+  /* State accordion inner text — keep readable */
+  .tier-states { font-size: 14px; }
+  .caveat { font-size: 14px; }
 
-  /* Card question text: must be at least 14px on mobile */
-  .card-question { font-size: 14px; }
+  .question-item { padding: 24px 0; }
 
-  /* Card body: reduce padding for mobile */
-  .card-body-inner {
-    padding: 0 16px 18px;
-    padding-top: 18px;
+  /* Timeline stays vertical — just tighten columns */
+  .timeline-section {
+    padding: 48px 20px;
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+  }
+  .timeline { padding-left: 24px; }
+  .timeline-item { grid-template-columns: 44px 1fr; gap: 14px; }
+  .timeline-item::before { left: -21px; }
+  .timeline-desc { font-size: 14px; }
+
+  footer {
+    padding: 32px 20px;
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
   }
 
-  /* Content blocks: bump up font size to hit 14px minimum */
-  .content-block p { font-size: 14px; }
-  .content-block .caveat { font-size: 13px; }
+  /* Stat bar: ensure it doesn't overflow on 320px devices */
+  .stat-bar-wrap { max-width: 100%; }
 
-  /* Status badges: keep readable but compact */
-  .status-badge { font-size: 10px; padding: 3px 8px; }
+  /* Sources: already wraps, ensure no overflow */
+  .sources-row { word-break: break-word; }
 
-  /* State toggle: ensure text doesn't truncate */
-  .state-toggle-label { font-size: 13px; }
-  .state-body-inner { padding: 12px 14px; }
-  .state-list { font-size: 13px; }
-  .tier-note { font-size: 12px; }
-
-  /* Cases grid: pills wrap gracefully */
-  .case-pill { font-size: 11px; padding: 4px 9px; }
-
-  /* Timeline: reduce side indentation on tiny screens */
-  .timeline { padding-left: 20px; }
-  .timeline-item { grid-template-columns: 52px 1fr; gap: 12px; }
-  .timeline-year { font-size: 11px; }
-  .timeline-desc { font-size: 13px; }
-
-  /* Footer: slightly tighter */
-  footer { padding: 24px 16px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
-  footer p { font-size: 12px; }
-}
-
-/* ── READ INDICATOR ── */
-.question-card.read .card-header .q-number {
-  background: var(--green-bg);
-  border-color: rgba(34,197,94,0.3);
-  color: var(--green);
+  /* Case tags: allow wrapping on narrow screens */
+  .case-tag { word-break: break-word; font-size: 12px; }
 }
 </style>
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- HEADER -->
 <header class="site-header" id="top">
   <div class="header-inner">
-    <div class="header-title"><span>Monday Men</span> — Chapter 6</div>
-    <div class="progress-wrap">
-      <span class="progress-text" id="progress-text">0 of 31 read</span>
-      <div class="progress-bar-outer">
-        <div class="progress-bar-inner" id="progress-bar"></div>
-      </div>
-    </div>
+    <div class="header-brand"><strong>Monday Men</strong> &mdash; Chapter 6 Research</div>
+    <div class="header-read-count" id="readCount"></div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Monday Men &mdash; Chapter 6 Research</div>
-  <h1>A Christian Manifesto<br><em>31 Legal Questions &mdash; Then vs. Now</em></h1>
-  <p class="hero-subtitle">Current Legal Status Report &mdash; April 2026</p>
-  <p class="hero-meta">
-    Book: &ldquo;A Christian Manifesto&rdquo; by Francis A. Schaeffer (1981)
-    <span>|</span>
-    Chapter: "An Open Window" (Pages 83–85)
-    <span>|</span>
-    Questions compiled by Attorney Robert L. Toms
-  </p>
+  <div class="hero-inner">
+    <div class="hero-kicker">Monday Men &mdash; Chapter 6</div>
+    <h1>A Christian Manifesto<br><em>31 Legal Questions &mdash; Then vs. Now</em></h1>
+    <p class="hero-subtitle">Where these questions stand forty-five years later &mdash; April 2026</p>
+    <p class="hero-byline">
+      &ldquo;A Christian Manifesto&rdquo; by Francis A. Schaeffer (1981)
+      <span>|</span>
+      Chapter: &ldquo;An Open Window&rdquo; (pp. 83&ndash;85)
+      <span>|</span>
+      Questions compiled by Attorney Robert L. Toms
+    </p>
 
-  <!-- SCORECARD -->
-  <div class="scorecard">
-    <div class="score-card green">
-      <div class="score-number">22</div>
-      <div class="score-label">Definitively<br>Resolved</div>
-    </div>
-    <div class="score-card blue">
-      <div class="score-number">5</div>
-      <div class="score-label">Resolved<br>in Principle</div>
-    </div>
-    <div class="score-card amber">
-      <div class="score-number">4</div>
-      <div class="score-label">Actively<br>in Flux</div>
-    </div>
-    <div class="score-card red">
-      <div class="score-number">1</div>
-      <div class="score-label">Resolved<br>Against</div>
+    <div class="stat-bar-wrap">
+      <div class="stat-bar">
+        <div class="stat-bar-seg green"></div>
+        <div class="stat-bar-seg blue"></div>
+        <div class="stat-bar-seg amber"></div>
+        <div class="stat-bar-seg red"></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-number green">22</div>
+          <div class="stat-label">Definitively<br>Resolved</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number blue">5</div>
+          <div class="stat-label">Resolved<br>in Principle</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number amber">4</div>
+          <div class="stat-label">Actively<br>in Flux</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number red">1</div>
+          <div class="stat-label">Resolved<br>Against</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FILTERS -->
-<div class="filters-section">
-  <div class="filters-label">Filter by status</div>
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">All 31 Questions</button>
-    <button class="filter-btn" data-filter="green"><span class="dot green"></span>Resolved (22)</button>
-    <button class="filter-btn" data-filter="blue"><span class="dot blue"></span>Largely Resolved (5)</button>
-    <button class="filter-btn" data-filter="amber"><span class="dot amber"></span>In Flux (4)</button>
-    <button class="filter-btn" data-filter="red"><span class="dot red"></span>Resolved Against (1)</button>
+<div class="filter-section">
+  <div class="filter-inner">
+    <button class="filter-tab active" data-filter="all">All 31 Questions</button>
+    <button class="filter-tab" data-filter="green"><span class="dot green"></span> Resolved (22)</button>
+    <button class="filter-tab" data-filter="blue"><span class="dot blue"></span> Largely Resolved (5)</button>
+    <button class="filter-tab" data-filter="amber"><span class="dot amber"></span> In Flux (4)</button>
+    <button class="filter-tab" data-filter="red"><span class="dot red"></span> Resolved Against (1)</button>
   </div>
 </div>
 
@@ -801,1107 +848,1345 @@ footer strong { color: var(--text-2); }
 <main class="main" id="questions">
 
   <!-- Q1 -->
-  <div class="question-card" data-status="green" data-q="1">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q01</div>
-      <div class="card-main">
-        <div class="card-question">Is a minister of the gospel liable for malpractice for using spiritual guidance rather than psychological or medical techniques?</div>
-        <div class="card-meta">
-          <span class="status-badge green">Resolved — No Liability</span>
+  <article class="question-item" data-status="green" data-q="1">
+    <div class="question-layout">
+      <div class="question-number">1</div>
+      <div class="question-content">
+        <h2 class="question-title">Is a minister of the gospel liable for malpractice for using spiritual guidance rather than psychological or medical techniques?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; No Liability</span>
+        </div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>No court in America has recognized clergy malpractice as a valid cause of action — a recognition that the state lacks competence to define what constitutes faithful pastoral care. <strong>Nally v. Grace Community Church</strong> (Cal. Supreme Court, 1988) ruled unanimously that imposing a secular standard of care on pastoral counseling would violate the Establishment Clause. Over 7,000 churches filed amicus briefs — a striking picture of the church speaking with one voice on the autonomy of its ministry.</p>
+                <div class="caveat"><span class="caveat-icon">&#9888;</span> If a pastor holds a separate professional license (LPC, psychologist), they can be held to that profession's standard of care. The distinction matters: the state may regulate the psychologist's office, but it may not enter the pastor's study.</div>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Nally v. Grace Community Church, 47 Cal.3d 278 (1988)</span>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Sources</div>
+              <div class="sources-row">
+                <span>Nally v. Grace Community Church (1988)</span>
+                <span>Church Law &amp; Tax</span>
+                <span>NC Central Law Review</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>Clergy malpractice has never been recognized by any U.S. court. <strong>Nally v. Grace Community Church</strong> (Cal. Supreme Court, 1988) ruled unanimously that imposing a standard of care on pastoral counseling would violate the Establishment Clause. Over 7,000 churches filed amicus briefs.</p>
-          <div class="caveat">If a pastor holds a separate professional license (LPC, psychologist), they can be held to that profession's standard of care — not for pastoral counseling itself.</div>
-        </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Nally v. Grace Community Church, 47 Cal.3d 278 (1988)</span>
-        </div>
-        <div class="section-label">Sources</div>
-        <ul class="sources-list">
-          <li>Nally v. Grace Community Church (1988)</li>
-          <li>Church Law &amp; Tax</li>
-          <li>NC Central Law Review</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  </article>
 
   <!-- Q2 -->
-  <div class="question-card" data-status="blue" data-q="2">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q02</div>
-      <div class="card-main">
-        <div class="card-question">Can a Christian residence house in a college have the same standing as a fraternity/sorority for off-campus residency rules?</div>
-        <div class="card-meta">
-          <span class="status-badge blue">Largely Resolved — Yes in Principle</span>
+  <article class="question-item" data-status="blue" data-q="2">
+    <div class="question-layout">
+      <div class="question-number">2</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a Christian residence house in a college have the same standing as a fraternity/sorority for off-campus residency rules?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; Yes in Principle</span>
+        </div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>No single landmark case governs here, but the viewpoint discrimination doctrine strongly favors equal treatment. The principle is straightforward: if a university recognizes a fraternity house, it cannot deny the same standing to a Christian residence simply because its organizing conviction is theological rather than social.</p>
+                <p><strong>Key precedents:</strong> Widmar v. Vincent (1981), Rosenberger v. UVA (1995), and Good News Club v. Milford (2001) establish that viewpoint-neutral access to facilities must include religious organizations.</p>
+                <div class="caveat"><span class="caveat-icon">&#9888;</span> Outcome is fact-specific — the protection is strongest at public institutions, where the First Amendment binds directly.</div>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Widmar v. Vincent, 454 U.S. 263 (1981)</span>
+                <span class="case-tag">Rosenberger v. UVA, 515 U.S. 819 (1995)</span>
+                <span class="case-tag">Good News Club v. Milford (2001)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>No single landmark case, but the viewpoint discrimination doctrine strongly favors equal treatment. A public university denying exemptions to a Christian house while granting them to Greek houses faces a strong First Amendment challenge.</p>
-          <p><strong>Key precedents:</strong> Widmar v. Vincent (1981), Rosenberger v. UVA (1995), and Good News Club v. Milford (2001) establish that viewpoint-neutral access to facilities must include religious organizations.</p>
-          <div class="caveat">Outcome is fact-specific — depends on whether the institution is public or private.</div>
-        </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Widmar v. Vincent, 454 U.S. 263 (1981)</span>
-          <span class="case-pill">Rosenberger v. UVA, 515 U.S. 819 (1995)</span>
-          <span class="case-pill">Good News Club v. Milford (2001)</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  </article>
 
   <!-- Q3 -->
-  <div class="question-card" data-status="green" data-q="3">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q03</div>
-      <div class="card-main">
-        <div class="card-question">Can Christian high school students assemble on campus for religious discussion?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>The <strong>Equal Access Act of 1984</strong> requires any public secondary school with a "limited open forum" to grant equal access to student religious groups. <strong>Board of Education v. Mergens</strong> (SCOTUS, 1990, 8-1) upheld the Act. <strong>Good News Club v. Milford</strong> (SCOTUS, 2001, 6-3) extended protection to elementary schools. Schools must annually certify compliance.</p>
+  <article class="question-item" data-status="green" data-q="3">
+    <div class="question-layout">
+      <div class="question-number">3</div>
+      <div class="question-content">
+        <h2 class="question-title">Can Christian high school students assemble on campus for religious discussion?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Equal Access Act of 1984</span>
-          <span class="case-pill">Board of Educ. v. Mergens, 496 U.S. 226 (1990)</span>
-          <span class="case-pill">Good News Club v. Milford, 533 U.S. 98 (2001)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>Congress answered this question decisively with the <strong>Equal Access Act of 1984</strong> — students who gather around Scripture have the same right to meet as any chess club or debate team. <strong>Board of Education v. Mergens</strong> (SCOTUS, 1990, 8-1) upheld the Act by an overwhelming margin. <strong>Good News Club v. Milford</strong> (SCOTUS, 2001, 6-3) extended the same protection down to elementary schools. Schools must annually certify compliance.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Equal Access Act of 1984</span>
+                <span class="case-tag">Board of Educ. v. Mergens, 496 U.S. 226 (1990)</span>
+                <span class="case-tag">Good News Club v. Milford, 533 U.S. 98 (2001)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q4 -->
-  <div class="question-card" data-status="green" data-q="4">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q04</div>
-      <div class="card-main">
-        <div class="card-question">Can Christian teachers in public schools meet before class for prayer?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes, With Boundaries</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Kennedy v. Bremerton School District</strong> (SCOTUS, 2022, 6-3) — private religious expression during non-instructional time is protected. The ruling overruled the Lemon test. 2025 DOE guidance explicitly states teachers may pray during lunch or meet for prayer before school.</p>
-          <div class="caveat">Teachers cannot lead students in prayer or use official authority to promote religion during school hours.</div>
+  <article class="question-item" data-status="green" data-q="4">
+    <div class="question-layout">
+      <div class="question-number">4</div>
+      <div class="question-content">
+        <h2 class="question-title">Can Christian teachers in public schools meet before class for prayer?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes, With Boundaries</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Kennedy v. Bremerton, 597 U.S. 507 (2022)</span>
-          <span class="case-pill">DOE Guidance (2025)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>In <strong>Kennedy v. Bremerton</strong> (SCOTUS, 2022, 6-3), the Court affirmed what should have been obvious: a man does not surrender his right to pray simply because he draws a government paycheck. The ruling overruled the Lemon test — an analytical framework that had chilled religious expression for decades. 2025 DOE guidance now explicitly states teachers may pray during lunch or meet for prayer before school.</p>
+                <div class="caveat"><span class="caveat-icon">&#9888;</span> The boundary remains where it should: teachers cannot use their official authority to coerce students into religious exercise. But private devotion among colleagues is exactly what the Free Exercise Clause was designed to protect.</div>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Kennedy v. Bremerton, 597 U.S. 507 (2022)</span>
+                <span class="case-tag">DOE Guidance (2025)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q5 -->
-  <div class="question-card" data-status="green" data-q="5">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q05</div>
-      <div class="card-main">
-        <div class="card-question">Can Christian college students meet in groups on state university campus?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Widmar v. Vincent</strong> (SCOTUS, 1981, 8-1) established the right. <strong>Rosenberger v. UVA</strong> (1995) extended protection to funding. <strong>InterVarsity v. University of Iowa</strong> (8th Cir., 2021) held that selective enforcement against religious groups is unconstitutional — officials were held personally liable.</p>
-          <div class="caveat">Active tension: CLS v. Martinez (2010) allows "all-comers" policies, but selective enforcement against only religious groups is clearly illegal.</div>
+  <article class="question-item" data-status="green" data-q="5">
+    <div class="question-layout">
+      <div class="question-number">5</div>
+      <div class="question-content">
+        <h2 class="question-title">Can Christian college students meet in groups on state university campus?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Widmar v. Vincent, 454 U.S. 263 (1981)</span>
-          <span class="case-pill">Rosenberger v. UVA, 515 U.S. 819 (1995)</span>
-          <span class="case-pill">InterVarsity v. Univ. of Iowa (8th Cir. 2021)</span>
-          <span class="case-pill">CLS v. Martinez (2010)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Widmar v. Vincent</strong> (SCOTUS, 1981, 8-1) established the right — decided the same year Schaeffer was writing these questions. <strong>Rosenberger v. UVA</strong> (1995) extended the protection to funding: if the university funds student publications, it cannot defund the ones that speak from a Christian perspective. <strong>InterVarsity v. University of Iowa</strong> (8th Cir., 2021) held that selective enforcement against religious groups is unconstitutional — and the officials responsible were held personally liable.</p>
+                <div class="caveat"><span class="caveat-icon">&#9888;</span> Real tension persists: CLS v. Martinez (2010) allows &ldquo;all-comers&rdquo; policies — but when those policies are enforced only against Christian groups while secular organizations maintain their membership standards, the pretense of neutrality collapses.</div>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Widmar v. Vincent, 454 U.S. 263 (1981)</span>
+                <span class="case-tag">Rosenberger v. UVA, 515 U.S. 819 (1995)</span>
+                <span class="case-tag">InterVarsity v. Univ. of Iowa (8th Cir. 2021)</span>
+                <span class="case-tag">CLS v. Martinez (2010)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q6 -->
-  <div class="question-card" data-status="green" data-q="6">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q06</div>
-      <div class="card-main">
-        <div class="card-question">Can HEW require a Bible college to admit drug addicts/alcoholics as "handicapped persons"?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Depends on Federal Funding</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>No federal funds:</strong> Neither Section 504 nor the ADA applies. The ADA explicitly exempts religious organizations (42 U.S.C. §12187).</p>
-          <p><strong>Any federal funds</strong> (including student aid) = Section 504 applies institution-wide per the Civil Rights Restoration Act of 1987. Current illegal drug users are excluded from protection (1992 amendments). Recovering addicts and alcoholics remain protected.</p>
+  <article class="question-item" data-status="green" data-q="6">
+    <div class="question-layout">
+      <div class="question-number">6</div>
+      <div class="question-content">
+        <h2 class="question-title">Can HEW require a Bible college to admit drug addicts/alcoholics as &ldquo;handicapped persons&rdquo;?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Depends on Federal Funding</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Section 504, Rehabilitation Act</span>
-          <span class="case-pill">ADA Title III §12187</span>
-          <span class="case-pill">Civil Rights Restoration Act 1987</span>
-          <span class="case-pill">Grove City College v. Bell (1984)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>No federal funds:</strong> Neither Section 504 nor the ADA applies. Congress wisely recognized that religious organizations have their own authority structures — the ADA explicitly exempts them (42 U.S.C. &sect;12187).</p>
+                <p><strong>Any federal funds</strong> (including student aid) = Section 504 applies institution-wide per the Civil Rights Restoration Act of 1987. The trade-off is clear: accepting Caesar's money comes with Caesar's conditions. Current illegal drug users are excluded from protection (1992 amendments). Recovering addicts and alcoholics remain protected.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Section 504, Rehabilitation Act</span>
+                <span class="case-tag">ADA Title III &sect;12187</span>
+                <span class="case-tag">Civil Rights Restoration Act 1987</span>
+                <span class="case-tag">Grove City College v. Bell (1984)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q7 -->
-  <div class="question-card" data-status="green" data-q="7">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q07</div>
-      <div class="card-main">
-        <div class="card-question">Can a church build a religious school or day-care in a residential zone?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Generally Yes</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>RLUIPA (2000)</strong> provides strict scrutiny protection. If secular schools or organizations are permitted in a zone, religious equivalents must receive equal treatment. <strong>Cutter v. Wilkinson</strong> (SCOTUS, 2005, unanimous) upheld RLUIPA. The DOJ enforces through its "Place to Worship Initiative."</p>
+  <article class="question-item" data-status="green" data-q="7">
+    <div class="question-layout">
+      <div class="question-number">7</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a church build a religious school or day-care in a residential zone?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Generally Yes</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">RLUIPA, 42 U.S.C. §2000cc (2000)</span>
-          <span class="case-pill">Cutter v. Wilkinson, 544 U.S. 709 (2005)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>RLUIPA (2000)</strong> is one of the strongest tools Congress has given the church against local government overreach — providing strict scrutiny protection against zoning exclusions. A church cannot be singled out for exclusion where secular equivalents are permitted. <strong>Cutter v. Wilkinson</strong> (SCOTUS, 2005, unanimous) upheld RLUIPA. The DOJ enforces through its &ldquo;Place to Worship Initiative.&rdquo;</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">RLUIPA, 42 U.S.C. &sect;2000cc (2000)</span>
+                <span class="case-tag">Cutter v. Wilkinson, 544 U.S. 709 (2005)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q8 -->
-  <div class="question-card" data-status="blue" data-q="8">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q08</div>
-      <div class="card-main">
-        <div class="card-question">Can parents be prosecuted for sending kids to unapproved religious schools?</div>
-        <div class="card-meta"><span class="status-badge blue">Largely Resolved — Generally No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Wisconsin v. Yoder</strong> (SCOTUS, 1972) established that Free Exercise can override compulsory education laws. All 50 states now permit homeschooling and private religious schooling in some form.</p>
+  <article class="question-item" data-status="blue" data-q="8">
+    <div class="question-layout">
+      <div class="question-number">8</div>
+      <div class="question-content">
+        <h2 class="question-title">Can parents be prosecuted for sending kids to unapproved religious schools?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; Generally No</span>
         </div>
-        <div class="section-label">State Regulation Breakdown</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Breakdown</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Low Regulation — No Approval Needed (17+ states)</div>
-              <div class="state-list">Texas, Idaho, Alaska, Indiana, Illinois, Missouri, Oklahoma, Michigan, Mississippi, Wyoming, Montana, Iowa, Alabama, Kentucky, Kansas, Nebraska, Arizona, Utah</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Wisconsin v. Yoder</strong> (SCOTUS, 1972) established a principle Schaeffer would have appreciated: the state's interest in education does not extinguish the prior claim of parents to raise their children according to conscience. All 50 states now permit homeschooling and private religious schooling in some form — a dramatic shift from the landscape of the early 1980s.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Moderate Regulation — Notification + Some Requirements (22+ states)</div>
-              <div class="state-list">Florida, Colorado, South Carolina, Oregon, Georgia, Tennessee, Virginia, Minnesota, Washington, North Carolina, Louisiana, New Hampshire, West Virginia, Wisconsin, Ohio, Hawaii, North Dakota, South Dakota, Arkansas, Delaware, Maryland, Maine</div>
+            <div class="body-section">
+              <div class="body-section-label">State Regulation Breakdown</div>
+              <div class="state-accordion" id="state-q8">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q8')">
+                  View State-by-State Breakdown
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Low Regulation &mdash; No Approval Needed (17+ states)</div>
+                      <div class="tier-states">Texas, Idaho, Alaska, Indiana, Illinois, Missouri, Oklahoma, Michigan, Mississippi, Wyoming, Montana, Iowa, Alabama, Kentucky, Kansas, Nebraska, Arizona, Utah</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Moderate Regulation &mdash; Notification + Some Requirements (22+ states)</div>
+                      <div class="tier-states">Florida, Colorado, South Carolina, Oregon, Georgia, Tennessee, Virginia, Minnesota, Washington, North Carolina, Louisiana, New Hampshire, West Virginia, Wisconsin, Ohio, Hawaii, North Dakota, South Dakota, Arkansas, Delaware, Maryland, Maine</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">High Regulation &mdash; Curriculum Approval Required (6&ndash;8 states)</div>
+                      <div class="tier-states">New York, Pennsylvania, Massachusetts, Rhode Island, Vermont, Connecticut, New Jersey</div>
+                    </div>
+                    <div class="tier-note">Active Battleground: New York yeshiva &ldquo;substantial equivalency&rdquo; dispute ongoing 2024&ndash;2026.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">High Regulation — Curriculum Approval Required (6–8 states)</div>
-              <div class="state-list">New York, Pennsylvania, Massachusetts, Rhode Island, Vermont, Connecticut, New Jersey</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Wisconsin v. Yoder, 406 U.S. 205 (1972)</span>
+                <span class="case-tag">HSLDA State Laws Database</span>
+              </div>
             </div>
-            <div class="tier-note">Active Battleground: New York yeshiva "substantial equivalency" dispute ongoing 2024–2026.</div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Wisconsin v. Yoder, 406 U.S. 205 (1972)</span>
-          <span class="case-pill">HSLDA State Laws Database</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q9 -->
-  <div class="question-card" data-status="red" data-q="9">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q09</div>
-      <div class="card-main">
-        <div class="card-question">Is an independent religious school exempt from unemployment taxes like church-owned schools?</div>
-        <div class="card-meta"><span class="status-badge red">Resolved Against — No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>St. Martin Evangelical Lutheran Church v. South Dakota</strong> (SCOTUS, 1981) — the FUTA exemption applies only to schools legally part of a church or "operated, supervised, controlled, or principally supported by" a church. Independent religious schools must pay unemployment taxes. Congress has not amended the statute in the decades since.</p>
+  <article class="question-item" data-status="red" data-q="9">
+    <div class="question-layout">
+      <div class="question-number">9</div>
+      <div class="question-content">
+        <h2 class="question-title">Is an independent religious school exempt from unemployment taxes like church-owned schools?</h2>
+        <div class="question-meta">
+          <span class="status-pill red">Resolved Against &mdash; No</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">St. Martin v. South Dakota, 451 U.S. 772 (1981)</span>
-          <span class="case-pill">DOL UIPL 28-87</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>St. Martin Evangelical Lutheran Church v. South Dakota</strong> (SCOTUS, 1981) &mdash; the FUTA exemption applies only to schools legally part of a church or &ldquo;operated, supervised, controlled, or principally supported by&rdquo; a church. Independent religious schools must pay unemployment taxes — however sincere their Christian mission — and this remains the one question on this list where the law clearly resolved against the religious institution. Congress has not amended the statute in the decades since.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">St. Martin v. South Dakota, 451 U.S. 772 (1981)</span>
+                <span class="case-tag">DOL UIPL 28-87</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q10 -->
-  <div class="question-card" data-status="amber" data-q="10">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q10</div>
-      <div class="card-main">
-        <div class="card-question">Will the State enforce anti-discrimination laws against a church that fires a homosexual staff member?</div>
-        <div class="card-meta"><span class="status-badge amber">In Flux — Partially Resolved</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>For ministers/religious function employees:</strong> NO enforcement — the ministerial exception applies (<em>Hosanna-Tabor</em> 2012, unanimous; <em>Our Lady of Guadalupe</em> 2020, 7-2).</p>
-          <p><strong>For non-ministerial employees:</strong> UNSETTLED — <em>Bostock v. Clayton County</em> (2020) extended Title VII to sexual orientation but left open RFRA and Section 702 exemptions. <em>Braidwood Management v. EEOC</em> (5th Cir., 2023) held RFRA requires an exemption. SCOTUS has NOT directly ruled on the Bostock/RFRA intersection.</p>
+  <article class="question-item" data-status="amber" data-q="10">
+    <div class="question-layout">
+      <div class="question-number">10</div>
+      <div class="question-content">
+        <h2 class="question-title">Will the State enforce anti-discrimination laws against a church that fires a homosexual staff member?</h2>
+        <div class="question-meta">
+          <span class="status-pill amber">In Flux &mdash; Partially Resolved</span>
         </div>
-        <div class="section-label">State Breakdown</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Breakdown</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Strong Protection for Religious Employers (19 states)</div>
-              <div class="state-list">Mississippi, Texas, Louisiana, Alabama, Oklahoma, Kansas, Kentucky, Tennessee, Arkansas, South Carolina, Florida, Idaho, Montana, Missouri, Georgia, South Dakota, West Virginia, Wyoming, Nebraska</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>For ministers/religious function employees:</strong> The state cannot intervene — the ministerial exception recognizes that the church, not the government, decides who carries out its mission (<em>Hosanna-Tabor</em> 2012, unanimous; <em>Our Lady of Guadalupe</em> 2020, 7-2).</p>
+                <p><strong>For non-ministerial employees:</strong> This remains the sharpest edge of the church-state question in 2026 — whether a congregation can hold its own members to the standards of its own confession. <em>Bostock v. Clayton County</em> (2020) extended Title VII to sexual orientation but left open RFRA and Section 702 exemptions. <em>Braidwood Management v. EEOC</em> (5th Cir., 2023) held RFRA requires an exemption. SCOTUS has NOT directly ruled on the Bostock/RFRA intersection.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Moderate (12 states)</div>
-              <div class="state-list">Utah ("Utah Compromise"), Indiana, Ohio, North Carolina, North Dakota, Virginia, Michigan, Wisconsin, Alaska, Arizona, Pennsylvania, Iowa</div>
+            <div class="body-section">
+              <div class="body-section-label">State Breakdown</div>
+              <div class="state-accordion" id="state-q10">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q10')">
+                  View State-by-State Breakdown
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Strong Protection for Religious Employers (19 states)</div>
+                      <div class="tier-states">Mississippi, Texas, Louisiana, Alabama, Oklahoma, Kansas, Kentucky, Tennessee, Arkansas, South Carolina, Florida, Idaho, Montana, Missouri, Georgia, South Dakota, West Virginia, Wyoming, Nebraska</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Moderate (12 states)</div>
+                      <div class="tier-states">Utah (&ldquo;Utah Compromise&rdquo;), Indiana, Ohio, North Carolina, North Dakota, Virginia, Michigan, Wisconsin, Alaska, Arizona, Pennsylvania, Iowa</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Challenging for Religious Employers (20+ states)</div>
+                      <div class="tier-states">California, New York, Colorado, Washington, Oregon, Massachusetts, New Jersey, Connecticut, Illinois, Minnesota, Vermont, Maine, Hawaii, Nevada, New Mexico, Rhode Island, Delaware, Maryland, New Hampshire, D.C.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Challenging for Religious Employers (20+ states)</div>
-              <div class="state-list">California, New York, Colorado, Washington, Oregon, Massachusetts, New Jersey, Connecticut, Illinois, Minnesota, Vermont, Maine, Hawaii, Nevada, New Mexico, Rhode Island, Delaware, Maryland, New Hampshire, D.C.</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Hosanna-Tabor v. EEOC (2012)</span>
+                <span class="case-tag">Our Lady of Guadalupe (2020)</span>
+                <span class="case-tag">Bostock v. Clayton County (2020)</span>
+                <span class="case-tag">Braidwood v. EEOC (5th Cir. 2023)</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Hosanna-Tabor v. EEOC (2012)</span>
-          <span class="case-pill">Our Lady of Guadalupe (2020)</span>
-          <span class="case-pill">Bostock v. Clayton County (2020)</span>
-          <span class="case-pill">Braidwood v. EEOC (5th Cir. 2023)</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q11 -->
-  <div class="question-card" data-status="green" data-q="11">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q11</div>
-      <div class="card-main">
-        <div class="card-question">Can seminary trustees refuse to graduate a practicing homosexual?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>Four independent legal shields: (1) <strong>Ministerial exception</strong> (Hosanna-Tabor, Our Lady of Guadalupe). (2) <strong>Title VII Section 702</strong> religious organization exemption. (3) <strong>Title IX religious exemption</strong> — upheld in Hunter v. DOE (9th Cir., 2024). (4) <strong>RFRA</strong>. The Fuller Seminary litigation (9th Cir., 2021) dismissed all claims after expulsion for same-sex marriage.</p>
+  <article class="question-item" data-status="green" data-q="11">
+    <div class="question-layout">
+      <div class="question-number">11</div>
+      <div class="question-content">
+        <h2 class="question-title">Can seminary trustees refuse to graduate a practicing homosexual?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Hosanna-Tabor v. EEOC (2012)</span>
-          <span class="case-pill">Our Lady of Guadalupe (2020)</span>
-          <span class="case-pill">Hunter v. DOE (9th Cir. 2024)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>A seminary exists to form ministers of the gospel — and the law, on this point, has recognized that the church must be free to determine who is fit for that calling. Four independent legal shields: (1) <strong>Ministerial exception</strong> (Hosanna-Tabor, Our Lady of Guadalupe). (2) <strong>Title VII Section 702</strong> religious organization exemption. (3) <strong>Title IX religious exemption</strong> &mdash; upheld in Hunter v. DOE (9th Cir., 2024). (4) <strong>RFRA</strong>. The Fuller Seminary litigation (9th Cir., 2021) dismissed all claims after expulsion for same-sex marriage.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Hosanna-Tabor v. EEOC (2012)</span>
+                <span class="case-tag">Our Lady of Guadalupe (2020)</span>
+                <span class="case-tag">Hunter v. DOE (9th Cir. 2024)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q12 -->
-  <div class="question-card" data-status="green" data-q="12">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q12</div>
-      <div class="card-main">
-        <div class="card-question">Can a city continue its nativity scene in front of city hall?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Almost Certainly Yes</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Lynch v. Donnelly</strong> (SCOTUS, 1984) — nativity scene OK as part of a broader holiday display. <strong>American Legion v. AHA</strong> (SCOTUS, 2019, 7-2) established a "presumption of constitutionality" for longstanding displays. <strong>Kennedy v. Bremerton</strong> (2022) eliminated the Lemon test. Under the "historical practices" framework, a 40-year tradition is extremely strong.</p>
+  <article class="question-item" data-status="green" data-q="12">
+    <div class="question-layout">
+      <div class="question-number">12</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a city continue its nativity scene in front of city hall?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Almost Certainly Yes</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Lynch v. Donnelly (1984)</span>
-          <span class="case-pill">American Legion v. AHA (2019)</span>
-          <span class="case-pill">Kennedy v. Bremerton (2022)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Lynch v. Donnelly</strong> (SCOTUS, 1984) &mdash; nativity scene OK as part of a broader holiday display. <strong>American Legion v. AHA</strong> (SCOTUS, 2019, 7-2) established a &ldquo;presumption of constitutionality&rdquo; for longstanding displays, recognizing that religious symbols woven into civic life are part of the fabric of the nation, not violations of it. <strong>Kennedy v. Bremerton</strong> (2022) eliminated the Lemon test. Under the &ldquo;historical practices&rdquo; framework, a 40-year tradition is extremely strong.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Lynch v. Donnelly (1984)</span>
+                <span class="case-tag">American Legion v. AHA (2019)</span>
+                <span class="case-tag">Kennedy v. Bremerton (2022)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q13 -->
-  <div class="question-card" data-status="blue" data-q="13">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q13</div>
-      <div class="card-main">
-        <div class="card-question">Can zoning laws prevent home Bible studies?</div>
-        <div class="card-meta"><span class="status-badge blue">Largely Resolved — No, But Friction Persists</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>RLUIPA (2000)</strong> — if secular gatherings (poker nights, book clubs) are allowed, Bible studies cannot be singled out. Manhattan Beach, CA (2024) was forced to back down after ACLJ intervention.</p>
-          <div class="caveat">The law is clear; enforcement is the issue. Local code enforcement officers often ignore or are unaware of federal protections.</div>
+  <article class="question-item" data-status="blue" data-q="13">
+    <div class="question-layout">
+      <div class="question-number">13</div>
+      <div class="question-content">
+        <h2 class="question-title">Can zoning laws prevent home Bible studies?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; No, But Friction Persists</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">RLUIPA (2000)</span>
-          <span class="case-pill">Cutter v. Wilkinson (2005)</span>
-          <span class="case-pill">ACLJ Manhattan Beach (2024)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>RLUIPA (2000)</strong> &mdash; if a neighborhood can host poker nights and book clubs without a permit, it cannot single out the gathering that opens with prayer. Manhattan Beach, CA (2024) was forced to back down after ACLJ intervention.</p>
+                <div class="caveat"><span class="caveat-icon">&#9888;</span> The law is clear; the problem is on the ground. Local code enforcement officers often ignore or are simply unaware of federal protections — which means Christians gathering in homes must sometimes be prepared to assert rights that are already theirs.</div>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">RLUIPA (2000)</span>
+                <span class="case-tag">Cutter v. Wilkinson (2005)</span>
+                <span class="case-tag">ACLJ Manhattan Beach (2024)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q14 -->
-  <div class="question-card" data-status="blue" data-q="14">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q14</div>
-      <div class="card-main">
-        <div class="card-question">Can a court decide which group gets the sanctuary in a church split?</div>
-        <div class="card-meta"><span class="status-badge blue">Largely Resolved — Property Yes, Doctrine No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Serbian Eastern Orthodox Diocese v. Milivojevich</strong> (SCOTUS, 1976) — courts CANNOT decide matters of doctrine. <strong>Jones v. Wolf</strong> (SCOTUS, 1979) — courts CAN use "neutral principles" (deeds, corporate charters) to resolve property disputes without entangling in doctrine.</p>
-          <div class="caveat">Active context: ~7,000 United Methodist churches disaffiliated 2019–2024. Litigation ongoing. Alabama Supreme Court (2025) rejected the UMC trust clause.</div>
+  <article class="question-item" data-status="blue" data-q="14">
+    <div class="question-layout">
+      <div class="question-number">14</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a court decide which group gets the sanctuary in a church split?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; Property Yes, Doctrine No</span>
         </div>
-        <div class="section-label">State Breakdown</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Breakdown</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Neutral Principles (local church tends to keep property)</div>
-              <div class="state-list">Texas, South Carolina, Arkansas, Illinois, Indiana, Kentucky, Maryland, Massachusetts, Missouri, New Hampshire, New York (mixed), North Carolina, Oregon, Pennsylvania</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Serbian Eastern Orthodox Diocese v. Milivojevich</strong> (SCOTUS, 1976) &mdash; civil courts have no competence to adjudicate matters of doctrine and church governance. <strong>Jones v. Wolf</strong> (SCOTUS, 1979) &mdash; courts CAN use &ldquo;neutral principles&rdquo; (deeds, corporate charters) to resolve property disputes without entangling in doctrine.</p>
+                <div class="caveat"><span class="caveat-icon">&#9888;</span> Active context: ~7,000 United Methodist churches disaffiliated 2019&ndash;2024 over doctrinal convictions. Litigation ongoing. Alabama Supreme Court (2025) rejected the UMC trust clause — a significant development for congregations that believe faithfulness to Scripture required them to leave.</div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Hierarchical Deference (denomination tends to keep property)</div>
-              <div class="state-list">California (mixed), Colorado, Connecticut, Delaware, Florida, Georgia, Louisiana, Mississippi, Tennessee</div>
+            <div class="body-section">
+              <div class="body-section-label">State Breakdown</div>
+              <div class="state-accordion" id="state-q14">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q14')">
+                  View State-by-State Breakdown
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Neutral Principles (local church tends to keep property)</div>
+                      <div class="tier-states">Texas, South Carolina, Arkansas, Illinois, Indiana, Kentucky, Maryland, Massachusetts, Missouri, New Hampshire, New York (mixed), North Carolina, Oregon, Pennsylvania</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Hierarchical Deference (denomination tends to keep property)</div>
+                      <div class="tier-states">California (mixed), Colorado, Connecticut, Delaware, Florida, Georgia, Louisiana, Mississippi, Tennessee</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Hybrid / Unclear (~23 states)</div>
+                      <div class="tier-states">Alabama, Virginia, and approximately 21 others with no definitive ruling</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Hybrid / Unclear (~23 states)</div>
-              <div class="state-list">Alabama, Virginia, and approximately 21 others with no definitive ruling</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Serbian Orthodox v. Milivojevich (1976)</span>
+                <span class="case-tag">Jones v. Wolf (1979)</span>
+                <span class="case-tag">UMC disaffiliation litigation (ongoing)</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Serbian Orthodox v. Milivojevich (1976)</span>
-          <span class="case-pill">Jones v. Wolf (1979)</span>
-          <span class="case-pill">UMC disaffiliation litigation (ongoing)</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q15 -->
-  <div class="question-card" data-status="green" data-q="15">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q15</div>
-      <div class="card-main">
-        <div class="card-question">Must a religious school hire a practicing homosexual as a teacher?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>Three independent shields: (1) <strong>Ministerial exception</strong> — covers nearly all teachers at religious schools after <em>Our Lady of Guadalupe</em> (2020). (2) <strong>Title VII Section 702</strong> religious organization exemption. (3) <strong>RFRA</strong>. <em>Billard v. Charlotte Catholic</em> (4th Cir., 2024) dismissed a teacher's claim after firing for announcing a same-sex engagement.</p>
+  <article class="question-item" data-status="green" data-q="15">
+    <div class="question-layout">
+      <div class="question-number">15</div>
+      <div class="question-content">
+        <h2 class="question-title">Must a religious school hire a practicing homosexual as a teacher?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; No</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Hosanna-Tabor v. EEOC (2012)</span>
-          <span class="case-pill">Our Lady of Guadalupe (2020)</span>
-          <span class="case-pill">Billard v. Charlotte Catholic (4th Cir. 2024)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>The law here is clear, and its reasoning sound: a religious school cannot faithfully transmit its convictions if the state dictates who stands in its classrooms. Three independent shields: (1) <strong>Ministerial exception</strong> &mdash; covers nearly all teachers at religious schools after <em>Our Lady of Guadalupe</em> (2020). (2) <strong>Title VII Section 702</strong> religious organization exemption. (3) <strong>RFRA</strong>. <em>Billard v. Charlotte Catholic</em> (4th Cir., 2024) dismissed a teacher&rsquo;s claim after firing for announcing a same-sex engagement.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Hosanna-Tabor v. EEOC (2012)</span>
+                <span class="case-tag">Our Lady of Guadalupe (2020)</span>
+                <span class="case-tag">Billard v. Charlotte Catholic (4th Cir. 2024)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q16 -->
-  <div class="question-card" data-status="blue" data-q="16">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q16</div>
-      <div class="card-main">
-        <div class="card-question">Can a church be fined for exuberant noise in worship?</div>
-        <div class="card-meta"><span class="status-badge blue">Largely Resolved — Nuanced</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>A truly neutral noise ordinance CAN apply (<em>Employment Division v. Smith</em>, 1990). But RLUIPA (2000) provides strict scrutiny if the ordinance substantially burdens religious practice or discriminates. <em>Reed v. Town of Gilbert</em> (2015) — content-based distinctions receive strict scrutiny.</p>
-          <p>If a city allows construction noise but fines church music, that is likely unconstitutional. No clean SCOTUS ruling specifically on church worship noise.</p>
+  <article class="question-item" data-status="blue" data-q="16">
+    <div class="question-layout">
+      <div class="question-number">16</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a church be fined for exuberant noise in worship?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; Nuanced</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Employment Division v. Smith (1990)</span>
-          <span class="case-pill">RLUIPA (2000)</span>
-          <span class="case-pill">Reed v. Town of Gilbert (2015)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>A truly neutral noise ordinance CAN apply (<em>Employment Division v. Smith</em>, 1990). But RLUIPA (2000) provides strict scrutiny if the ordinance substantially burdens religious practice or discriminates. <em>Reed v. Town of Gilbert</em> (2015) &mdash; content-based distinctions receive strict scrutiny.</p>
+                <p>If a city allows construction noise but fines church music, that is likely unconstitutional. No clean SCOTUS ruling specifically on church worship noise.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Employment Division v. Smith (1990)</span>
+                <span class="case-tag">RLUIPA (2000)</span>
+                <span class="case-tag">Reed v. Town of Gilbert (2015)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q17 -->
-  <div class="question-card" data-status="blue" data-q="17">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q17</div>
-      <div class="card-main">
-        <div class="card-question">Can the state close a church-run juvenile home for spanking?</div>
-        <div class="card-meta"><span class="status-badge blue">Largely Resolved — Generally Yes, But Patchwork</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Prince v. Massachusetts</strong> (SCOTUS, 1944) — state parens patriae power can override religious freedom to protect children. <strong>Fulton v. Philadelphia</strong> (2021) — if licensing has discretionary exemptions, denying one to a religious home triggers strict scrutiny.</p>
+  <article class="question-item" data-status="blue" data-q="17">
+    <div class="question-layout">
+      <div class="question-number">17</div>
+      <div class="question-content">
+        <h2 class="question-title">Can the state close a church-run juvenile home for spanking?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; Generally Yes, But Patchwork</span>
         </div>
-        <div class="section-label">State Breakdown</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Breakdown</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Religious Exemptions from Licensing (12+ states)</div>
-              <div class="state-list">Alabama (broadest — full exemption), Indiana, Missouri, North Carolina, Virginia, Florida, Georgia, Michigan, Mississippi, South Carolina, Arkansas, Kentucky</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Prince v. Massachusetts</strong> (SCOTUS, 1944) &mdash; state parens patriae power can override religious freedom to protect children. <strong>Fulton v. Philadelphia</strong> (2021) &mdash; if licensing has discretionary exemptions, denying one to a religious home triggers strict scrutiny.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">No Licensing Exemption (30+ states)</div>
-              <div class="state-list">California, Colorado, Connecticut, Delaware, Hawaii, Illinois, Iowa, Maine, Massachusetts, Minnesota, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Dakota, Ohio, Oregon, Pennsylvania, Rhode Island, South Dakota, Utah, Vermont, Washington, West Virginia, Wisconsin, Wyoming, D.C.</div>
+            <div class="body-section">
+              <div class="body-section-label">State Breakdown</div>
+              <div class="state-accordion" id="state-q17">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q17')">
+                  View State-by-State Breakdown
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Religious Exemptions from Licensing (12+ states)</div>
+                      <div class="tier-states">Alabama (broadest &mdash; full exemption), Indiana, Missouri, North Carolina, Virginia, Florida, Georgia, Michigan, Mississippi, South Carolina, Arkansas, Kentucky</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">No Licensing Exemption (30+ states)</div>
+                      <div class="tier-states">California, Colorado, Connecticut, Delaware, Hawaii, Illinois, Iowa, Maine, Massachusetts, Minnesota, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Dakota, Ohio, Oregon, Pennsylvania, Rhode Island, South Dakota, Utah, Vermont, Washington, West Virginia, Wisconsin, Wyoming, D.C.</div>
+                    </div>
+                    <div class="tier-note">Recent scandals: Agape Boarding School, MO (2021&ndash;2024, convictions); Circle of Hope Girls&rsquo; Ranch, MO (2023, convictions); Texas unregulated facilities (2020&ndash;2023, legislation passed).</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="tier-note">Recent scandals: Agape Boarding School, MO (2021–2024, convictions); Circle of Hope Girls' Ranch, MO (2023, convictions); Texas unregulated facilities (2020–2023, legislation passed).</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Prince v. Massachusetts (1944)</span>
+                <span class="case-tag">Fulton v. Philadelphia (2021)</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Prince v. Massachusetts (1944)</span>
-          <span class="case-pill">Fulton v. Philadelphia (2021)</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q18 -->
-  <div class="question-card" data-status="green" data-q="18">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q18</div>
-      <div class="card-main">
-        <div class="card-question">Can religious solicitation be confined to official booths?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Depends on Forum Type</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Heffron v. ISKCON</strong> (SCOTUS, 1981) — YES at state fairs (booth restrictions are valid). <strong>ISKCON v. Lee</strong> (SCOTUS, 1992) — YES for solicitation at airports, NO for literature distribution at airports. On public streets and sidewalks — NO, would fail strict scrutiny.</p>
+  <article class="question-item" data-status="green" data-q="18">
+    <div class="question-layout">
+      <div class="question-number">18</div>
+      <div class="question-content">
+        <h2 class="question-title">Can religious solicitation be confined to official booths?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Depends on Forum Type</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Heffron v. ISKCON (1981)</span>
-          <span class="case-pill">ISKCON v. Lee (1992)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Heffron v. ISKCON</strong> (SCOTUS, 1981) &mdash; YES at state fairs (booth restrictions are valid). <strong>ISKCON v. Lee</strong> (SCOTUS, 1992) &mdash; YES for solicitation at airports, NO for literature distribution at airports. On public streets and sidewalks — the traditional forums where the gospel has been proclaimed since the Apostles — booth-only restrictions would fail strict scrutiny.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Heffron v. ISKCON (1981)</span>
+                <span class="case-tag">ISKCON v. Lee (1992)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q19 -->
-  <div class="question-card" data-status="amber" data-q="19">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q19</div>
-      <div class="card-main">
-        <div class="card-question">Is an unborn fetus a "person" entitled to Constitutional protection?</div>
-        <div class="card-meta"><span class="status-badge amber">In Flux — Most Actively Contested</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><em>Roe v. Wade</em> (1973) said no. <strong>Dobbs v. Jackson</strong> (2022) overturned Roe but DECLINED to rule on personhood. <strong>LePage v. Center for Reproductive Medicine</strong> (Alabama, 2024) — frozen embryos are "children" under state law. H.R. 722 (Life at Conception Act) is pending with 68+ co-sponsors but has approximately 1% chance of passage.</p>
+  <article class="question-item" data-status="amber" data-q="19">
+    <div class="question-layout">
+      <div class="question-number">19</div>
+      <div class="question-content">
+        <h2 class="question-title">Is an unborn fetus a &ldquo;person&rdquo; entitled to Constitutional protection?</h2>
+        <div class="question-meta">
+          <span class="status-pill amber">In Flux &mdash; Most Actively Contested</span>
         </div>
-        <div class="section-label">State Breakdown</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Breakdown</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Strong Personhood — Life at Conception in Law (14 states)</div>
-              <div class="state-list">Alabama, Arkansas, Georgia, Idaho, Kentucky, Louisiana, Mississippi, Missouri*, North Dakota, Oklahoma, South Dakota, Tennessee, Texas, West Virginia</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><em>Roe v. Wade</em> (1973) said no — and for nearly fifty years, that answer foreclosed the deeper question. <strong>Dobbs v. Jackson</strong> (2022) overturned Roe but DECLINED to rule on personhood. The door Schaeffer wanted opened is now open, but the church still has the harder work of persuasion ahead. <strong>LePage v. Center for Reproductive Medicine</strong> (Alabama, 2024) &mdash; frozen embryos are &ldquo;children&rdquo; under state law. H.R. 722 (Life at Conception Act) is pending with 68+ co-sponsors but has approximately 1% chance of passage.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Moderate — Fetal Homicide But No Personhood (12–15 states)</div>
-              <div class="state-list">Florida, Indiana, Iowa, Kansas, Michigan*, Nebraska, North Carolina, Ohio*, Pennsylvania, South Carolina, Utah, Virginia, Wisconsin</div>
+            <div class="body-section">
+              <div class="body-section-label">State Breakdown</div>
+              <div class="state-accordion" id="state-q19">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q19')">
+                  View State-by-State Breakdown
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Strong Personhood &mdash; Life at Conception in Law (14 states)</div>
+                      <div class="tier-states">Alabama, Arkansas, Georgia, Idaho, Kentucky, Louisiana, Mississippi, Missouri*, North Dakota, Oklahoma, South Dakota, Tennessee, Texas, West Virginia</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Moderate &mdash; Fetal Homicide But No Personhood (12&ndash;15 states)</div>
+                      <div class="tier-states">Florida, Indiana, Iowa, Kansas, Michigan*, Nebraska, North Carolina, Ohio*, Pennsylvania, South Carolina, Utah, Virginia, Wisconsin</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Opposing &mdash; Constitutional Abortion Protections (20+ states)</div>
+                      <div class="tier-states">California, Vermont, Michigan*, Ohio*, Arizona*, Missouri*, Colorado, Montana, Maryland, Nevada, New York, Connecticut, Delaware, Hawaii, Illinois, Maine, Massachusetts, Minnesota, New Hampshire, New Jersey, New Mexico, Oregon, Rhode Island, Washington</div>
+                    </div>
+                    <div class="tier-note">(*) = State appears in multiple categories due to conflicting statutes. Arizona, Missouri, Michigan, Ohio are active tension states expected to generate litigation through the decade. Active 2026: Nevada must re-pass abortion amendment; multiple states considering personhood bills.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Opposing — Constitutional Abortion Protections (20+ states)</div>
-              <div class="state-list">California, Vermont, Michigan*, Ohio*, Arizona*, Missouri*, Colorado, Montana, Maryland, Nevada, New York, Connecticut, Delaware, Hawaii, Illinois, Maine, Massachusetts, Minnesota, New Hampshire, New Jersey, New Mexico, Oregon, Rhode Island, Washington</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Dobbs v. Jackson (2022)</span>
+                <span class="case-tag">LePage v. Center for Reproductive Medicine (AL 2024)</span>
+                <span class="case-tag">Guttmacher Institute</span>
+                <span class="case-tag">NCSL State Policy Tracker</span>
+              </div>
             </div>
-            <div class="tier-note">(*) = State appears in multiple categories due to conflicting statutes. Arizona, Missouri, Michigan, Ohio are active tension states expected to generate litigation through the decade. Active 2026: Nevada must re-pass abortion amendment; multiple states considering personhood bills.</div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Dobbs v. Jackson (2022)</span>
-          <span class="case-pill">LePage v. Center for Reproductive Medicine (AL 2024)</span>
-          <span class="case-pill">Guttmacher Institute</span>
-          <span class="case-pill">NCSL State Policy Tracker</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q20 -->
-  <div class="question-card" data-status="amber" data-q="20">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q20</div>
-      <div class="card-main">
-        <div class="card-question">Can the Ten Commandments be posted in a public classroom?</div>
-        <div class="card-meta"><span class="status-badge amber">In Flux — Actively Re-Litigated</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Stone v. Graham</strong> (SCOTUS, 1980) said no — still technically binding precedent. <strong>Kennedy v. Bremerton</strong> (2022) killed the Lemon test that <em>Stone</em> relied on. A SCOTUS showdown is expected within 1–3 years.</p>
+  <article class="question-item" data-status="amber" data-q="20">
+    <div class="question-layout">
+      <div class="question-number">20</div>
+      <div class="question-content">
+        <h2 class="question-title">Can the Ten Commandments be posted in a public classroom?</h2>
+        <div class="question-meta">
+          <span class="status-pill amber">In Flux &mdash; Actively Re-Litigated</span>
         </div>
-        <div class="section-label">State Legislation</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🏛</span>View State Legislation Status</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Laws Passed (3 states)</div>
-              <div class="state-list">Louisiana (HB 71, 2024 — now enforceable after 5th Cir. vacated injunction Feb. 2026) · Texas (SB 10, 2025 — multiple injunctions, AG instructing display anyway) · Arkansas (Act 573, 2025 — permanently blocked March 2026)</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Stone v. Graham</strong> (SCOTUS, 1980) said no &mdash; still technically binding precedent. <strong>Kennedy v. Bremerton</strong> (2022) killed the Lemon test that <em>Stone</em> relied on. The foundation has been removed, and the structure built upon it cannot stand indefinitely. A SCOTUS showdown is expected within 1&ndash;3 years.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Legislation Pending (9+ states)</div>
-              <div class="state-list">Oklahoma, South Carolina, Kentucky, Alabama, Georgia, Indiana, West Virginia, Tennessee, Missouri</div>
+            <div class="body-section">
+              <div class="body-section-label">State Legislation</div>
+              <div class="state-accordion" id="state-q20">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q20')">
+                  View State Legislation Status
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Laws Passed (3 states)</div>
+                      <div class="tier-states">Louisiana (HB 71, 2024 &mdash; now enforceable after 5th Cir. vacated injunction Feb. 2026) &middot; Texas (SB 10, 2025 &mdash; multiple injunctions, AG instructing display anyway) &middot; Arkansas (Act 573, 2025 &mdash; permanently blocked March 2026)</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Legislation Pending (9+ states)</div>
+                      <div class="tier-states">Oklahoma, South Carolina, Kentucky, Alabama, Georgia, Indiana, West Virginia, Tennessee, Missouri</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Legislation Failed</div>
+                      <div class="tier-states">Mississippi, Montana, North Dakota, South Dakota</div>
+                    </div>
+                    <div class="tier-note">Utah passed a watered-down version permitting Ten Commandments in history curricula but not as mandatory classroom display.</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Legislation Failed</div>
-              <div class="state-list">Mississippi, Montana, North Dakota, South Dakota</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Stone v. Graham (1980)</span>
+                <span class="case-tag">Kennedy v. Bremerton (2022)</span>
+                <span class="case-tag">Roake v. Brumley (5th Cir. 2026)</span>
+              </div>
             </div>
-            <div class="tier-note">Utah passed a watered-down version permitting Ten Commandments in history curricula but not as mandatory classroom display.</div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Stone v. Graham (1980)</span>
-          <span class="case-pill">Kennedy v. Bremerton (2022)</span>
-          <span class="case-pill">Roake v. Brumley (5th Cir. 2026)</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q21 -->
-  <div class="question-card" data-status="green" data-q="21">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q21</div>
-      <div class="card-main">
-        <div class="card-question">Can students have a period of silent meditation and prayer?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes, If Facially Neutral</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Wallace v. Jaffree</strong> (SCOTUS, 1985) struck down Alabama's law for having religious purpose, but did NOT strike down neutral "meditation only" statutes. Post-Kennedy (2022), the historical-practices framework makes neutral moment-of-silence laws even more permissible.</p>
+  <article class="question-item" data-status="green" data-q="21">
+    <div class="question-layout">
+      <div class="question-number">21</div>
+      <div class="question-content">
+        <h2 class="question-title">Can students have a period of silent meditation and prayer?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes, If Facially Neutral</span>
         </div>
-        <div class="section-label">State Laws</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Laws</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">Mandatory Moment of Silence (16 states)</div>
-              <div class="state-list">Alabama, Arizona, Connecticut, Florida, Georgia, Illinois, Indiana, Massachusetts, Nebraska, Nevada, Oklahoma, Rhode Island, South Carolina, Tennessee, Texas, Virginia</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Wallace v. Jaffree</strong> (SCOTUS, 1985) struck down Alabama&rsquo;s law — not because silence before God is unconstitutional, but because the legislature's stated purpose was transparently religious. Neutral &ldquo;meditation only&rdquo; statutes were left untouched. Post-Kennedy (2022), the historical-practices framework makes neutral moment-of-silence laws even more permissible. A student who chooses to spend that moment in prayer is exercising a right the Constitution was written to protect.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Permissive (17–18 states)</div>
-              <div class="state-list">Arkansas, Delaware, Kansas, Kentucky, Louisiana, Maine, Maryland, Michigan, Minnesota, Montana, New Hampshire, New Mexico, New York, North Carolina, North Dakota, Ohio, Pennsylvania, Utah, Washington</div>
+            <div class="body-section">
+              <div class="body-section-label">State Laws</div>
+              <div class="state-accordion" id="state-q21">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q21')">
+                  View State-by-State Laws
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">Mandatory Moment of Silence (16 states)</div>
+                      <div class="tier-states">Alabama, Arizona, Connecticut, Florida, Georgia, Illinois, Indiana, Massachusetts, Nebraska, Nevada, Oklahoma, Rhode Island, South Carolina, Tennessee, Texas, Virginia</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Permissive (17&ndash;18 states)</div>
+                      <div class="tier-states">Arkansas, Delaware, Kansas, Kentucky, Louisiana, Maine, Maryland, Michigan, Minnesota, Montana, New Hampshire, New Mexico, New York, North Carolina, North Dakota, Ohio, Pennsylvania, Utah, Washington</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">No Law (~16 states)</div>
+                      <div class="tier-states">California, Colorado, Hawaii, Idaho, Iowa, Mississippi, New Jersey, Oregon, South Dakota, Vermont, West Virginia, Wisconsin, Wyoming, and others</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">No Law (~16 states)</div>
-              <div class="state-list">California, Colorado, Hawaii, Idaho, Iowa, Mississippi, New Jersey, Oregon, South Dakota, Vermont, West Virginia, Wisconsin, Wyoming, and others</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Wallace v. Jaffree (1985)</span>
+                <span class="case-tag">Kennedy v. Bremerton (2022)</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Wallace v. Jaffree (1985)</span>
-          <span class="case-pill">Kennedy v. Bremerton (2022)</span>
-        </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q22 -->
-  <div class="question-card" data-status="green" data-q="22">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q22</div>
-      <div class="card-main">
-        <div class="card-question">Can Christmas carols be sung in public schools?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes, As Education</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Florey v. Sioux Falls</strong> (8th Cir., 1980) — religious music is permissible as cultural and educational heritage. <strong>Bauchman v. West High School</strong> (10th Cir., 1997) upheld a choir performing religious music for educational purposes.</p>
-          <p>A winter concert featuring "Silent Night" alongside "Jingle Bells" = constitutionally fine. An exclusively devotional religious service = not fine.</p>
+  <article class="question-item" data-status="green" data-q="22">
+    <div class="question-layout">
+      <div class="question-number">22</div>
+      <div class="question-content">
+        <h2 class="question-title">Can Christmas carols be sung in public schools?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes, As Education</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Florey v. Sioux Falls (8th Cir. 1980)</span>
-          <span class="case-pill">Bauchman v. West High School (10th Cir. 1997)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q23 -->
-  <div class="question-card" data-status="green" data-q="23">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q23</div>
-      <div class="card-main">
-        <div class="card-question">Must an employer allow Saturday Sabbath worship?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Strongly Yes</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><em>TWA v. Hardison</em> (1977) gutted accommodation for 46 years — the "de minimis cost" standard allowed employers to deny requests. <strong>Groff v. DeJoy</strong> (SCOTUS, 2023, UNANIMOUS 9-0) overruled Hardison. Employers must now bear "substantial increased costs" before denying religious accommodation. Co-worker complaints alone are insufficient justification. One of the most dramatic reversals on this list.</p>
-        </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Groff v. DeJoy, 600 U.S. 447 (2023)</span>
-          <span class="case-pill">TWA v. Hardison (1977) — overruled</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q24 -->
-  <div class="question-card" data-status="amber" data-q="24">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q24</div>
-      <div class="card-main">
-        <div class="card-question">Can a high school graduation be held in a church?</div>
-        <div class="card-meta"><span class="status-badge amber">In Flux — Genuinely Unsettled</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Elmbrook School District v. Doe</strong> (7th Cir. en banc, 2012) said no — holding a graduation in a church with a pervasive religious environment violates the Establishment Clause. SCOTUS declined certiorari; Justices Scalia and Thomas dissented from that denial. Elmbrook is only binding in the 7th Circuit.</p>
-          <p><strong>Kennedy v. Bremerton</strong> (2022) undermined Elmbrook's foundational Lemon test analysis. Under the historical-practices framework, civic events routinely held in churches throughout early American history would likely be treated very differently today.</p>
-        </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Elmbrook v. Doe (7th Cir. 2012)</span>
-          <span class="case-pill">Kennedy v. Bremerton (2022)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q25 -->
-  <div class="question-card" data-status="green" data-q="25">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q25</div>
-      <div class="card-main">
-        <div class="card-question">Can a state official seize a church and run it through a receiver?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Clearly No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>The most clearly resolved question on this list. Government cannot take over church governance — this violates both Religion Clauses plus the Ecclesiastical Abstention Doctrine. Established by <em>Serbian Eastern Orthodox Diocese v. Milivojevich</em> (SCOTUS, 1976), reinforced by <em>Hosanna-Tabor</em> (2012, unanimous) and <em>Our Lady of Guadalupe</em> (2020).</p>
-        </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Serbian Orthodox v. Milivojevich (1976)</span>
-          <span class="case-pill">Hosanna-Tabor v. EEOC (2012)</span>
-          <span class="case-pill">Our Lady of Guadalupe (2020)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q26 -->
-  <div class="question-card" data-status="blue" data-q="26">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q26</div>
-      <div class="card-main">
-        <div class="card-question">Can the state set minimum standards for religious school curricula?</div>
-        <div class="card-meta"><span class="status-badge blue">Largely Resolved — Yes, With Limits</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Pierce v. Society of Sisters</strong> (SCOTUS, 1925) — states may "reasonably regulate" private schools but cannot destroy the right of private choice in education. <strong>Wisconsin v. Yoder</strong> (1972) — Free Exercise can override state requirements.</p>
-        </div>
-        <div class="section-label">State Regulation Levels</div>
-        <div class="state-toggle" onclick="toggleState(this)">
-          <span class="state-toggle-label"><span class="icon">🗺</span>View State-by-State Regulation</span>
-          <svg class="state-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="state-body">
-          <div class="state-body-inner">
-            <div class="state-tier">
-              <div class="tier-title">No Meaningful Regulation (8 states)</div>
-              <div class="state-list">Alabama, Alaska, Arizona, Idaho, Mississippi, Missouri, Oklahoma, Texas</div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Florey v. Sioux Falls</strong> (8th Cir., 1980) &mdash; recognized what should be self-evident: the sacred music tradition is part of Western civilization's inheritance, and studying it is education, not indoctrination. <strong>Bauchman v. West High School</strong> (10th Cir., 1997) upheld a choir performing religious music for educational purposes.</p>
+                <p>A winter concert featuring &ldquo;Silent Night&rdquo; alongside &ldquo;Jingle Bells&rdquo; = constitutionally fine. An exclusively devotional religious service = not fine.</p>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Light Regulation — Requirements But Weak Enforcement (21 states)</div>
-              <div class="state-list">Arkansas, Connecticut, Delaware, Florida, Georgia, Hawaii, Illinois, Indiana, Kansas, Kentucky, Louisiana, Michigan, Montana, Nevada, New Mexico, North Carolina, South Carolina, South Dakota, Tennessee, Wisconsin, Wyoming</div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Florey v. Sioux Falls (8th Cir. 1980)</span>
+                <span class="case-tag">Bauchman v. West High School (10th Cir. 1997)</span>
+              </div>
             </div>
-            <div class="state-tier">
-              <div class="tier-title">Moderate — Subject Requirements + Some Oversight (14 states)</div>
-              <div class="state-list">California, Colorado, Iowa, Maine, Maryland, Minnesota, Nebraska, New Hampshire, New Jersey, Ohio, Oregon, Vermont, Virginia, West Virginia</div>
-            </div>
-            <div class="state-tier">
-              <div class="tier-title">Heavy — Substantial Equivalence + Testing/Approval (6 states)</div>
-              <div class="state-list">New York, Massachusetts, Rhode Island, North Dakota, Pennsylvania, Washington</div>
-            </div>
-            <div class="tier-note">Active: New York yeshiva dispute ongoing; Oklahoma religious charter school case at SCOTUS (Drummond).</div>
           </div>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Pierce v. Society of Sisters (1925)</span>
-          <span class="case-pill">Wisconsin v. Yoder (1972)</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Q23 -->
+  <article class="question-item" data-status="green" data-q="23">
+    <div class="question-layout">
+      <div class="question-number">23</div>
+      <div class="question-content">
+        <h2 class="question-title">Must an employer allow Saturday Sabbath worship?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Strongly Yes</span>
+        </div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>For 46 years, <em>TWA v. Hardison</em> (1977) made Sabbath observance nearly impossible for many workers — the &ldquo;de minimis cost&rdquo; standard allowed employers to deny requests with almost no justification. <strong>Groff v. DeJoy</strong> (SCOTUS, 2023, UNANIMOUS 9-0) overruled Hardison. Employers must now bear &ldquo;substantial increased costs&rdquo; before denying religious accommodation. Co-worker complaints alone are insufficient justification. The unanimous decision signals that the Court recognizes the Sabbath claim as something weightier than an employee preference.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Groff v. DeJoy, 600 U.S. 447 (2023)</span>
+                <span class="case-tag">TWA v. Hardison (1977) &mdash; overruled</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
+
+  <!-- Q24 -->
+  <article class="question-item" data-status="amber" data-q="24">
+    <div class="question-layout">
+      <div class="question-number">24</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a high school graduation be held in a church?</h2>
+        <div class="question-meta">
+          <span class="status-pill amber">In Flux &mdash; Genuinely Unsettled</span>
+        </div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Elmbrook School District v. Doe</strong> (7th Cir. en banc, 2012) said no &mdash; holding a graduation in a church with a pervasive religious environment violates the Establishment Clause. SCOTUS declined certiorari; Justices Scalia and Thomas dissented from that denial. Elmbrook is only binding in the 7th Circuit.</p>
+                <p><strong>Kennedy v. Bremerton</strong> (2022) undermined Elmbrook&rsquo;s foundational Lemon test analysis. Under the historical-practices framework, civic events routinely held in churches throughout early American history would likely be treated very differently today.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Elmbrook v. Doe (7th Cir. 2012)</span>
+                <span class="case-tag">Kennedy v. Bremerton (2022)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Q25 -->
+  <article class="question-item" data-status="green" data-q="25">
+    <div class="question-layout">
+      <div class="question-number">25</div>
+      <div class="question-content">
+        <h2 class="question-title">Can a state official seize a church and run it through a receiver?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Clearly No</span>
+        </div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>The most clearly resolved question on this list. Government cannot take over church governance &mdash; this violates both Religion Clauses plus the Ecclesiastical Abstention Doctrine. Christ is the head of the church, and the state has no authority to appoint a substitute. Established by <em>Serbian Eastern Orthodox Diocese v. Milivojevich</em> (SCOTUS, 1976), reinforced by <em>Hosanna-Tabor</em> (2012, unanimous) and <em>Our Lady of Guadalupe</em> (2020).</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Serbian Orthodox v. Milivojevich (1976)</span>
+                <span class="case-tag">Hosanna-Tabor v. EEOC (2012)</span>
+                <span class="case-tag">Our Lady of Guadalupe (2020)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Q26 -->
+  <article class="question-item" data-status="blue" data-q="26">
+    <div class="question-layout">
+      <div class="question-number">26</div>
+      <div class="question-content">
+        <h2 class="question-title">Can the state set minimum standards for religious school curricula?</h2>
+        <div class="question-meta">
+          <span class="status-pill blue">Largely Resolved &mdash; Yes, With Limits</span>
+        </div>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Pierce v. Society of Sisters</strong> (SCOTUS, 1925) &mdash; states may &ldquo;reasonably regulate&rdquo; private schools but cannot destroy the right of private choice in education — a right that predates the state itself. <strong>Wisconsin v. Yoder</strong> (1972) &mdash; Free Exercise can override state requirements.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">State Regulation Levels</div>
+              <div class="state-accordion" id="state-q26">
+                <button class="state-accordion-trigger" onclick="toggleState('state-q26')">
+                  View State-by-State Regulation
+                  <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="state-accordion-body">
+                  <div class="state-accordion-inner">
+                    <div class="state-tier">
+                      <div class="tier-title">No Meaningful Regulation (8 states)</div>
+                      <div class="tier-states">Alabama, Alaska, Arizona, Idaho, Mississippi, Missouri, Oklahoma, Texas</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Light Regulation &mdash; Requirements But Weak Enforcement (21 states)</div>
+                      <div class="tier-states">Arkansas, Connecticut, Delaware, Florida, Georgia, Hawaii, Illinois, Indiana, Kansas, Kentucky, Louisiana, Michigan, Montana, Nevada, New Mexico, North Carolina, South Carolina, South Dakota, Tennessee, Wisconsin, Wyoming</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Moderate &mdash; Subject Requirements + Some Oversight (14 states)</div>
+                      <div class="tier-states">California, Colorado, Iowa, Maine, Maryland, Minnesota, Nebraska, New Hampshire, New Jersey, Ohio, Oregon, Vermont, Virginia, West Virginia</div>
+                    </div>
+                    <div class="state-tier">
+                      <div class="tier-title">Heavy &mdash; Substantial Equivalence + Testing/Approval (6 states)</div>
+                      <div class="tier-states">New York, Massachusetts, Rhode Island, North Dakota, Pennsylvania, Washington</div>
+                    </div>
+                    <div class="tier-note">Active: New York yeshiva dispute ongoing; Oklahoma religious charter school case at SCOTUS (Drummond).</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Pierce v. Society of Sisters (1925)</span>
+                <span class="case-tag">Wisconsin v. Yoder (1972)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
 
   <!-- Q27 -->
-  <div class="question-card" data-status="green" data-q="27">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q27</div>
-      <div class="card-main">
-        <div class="card-question">Is religious tax exemption a right or privilege?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Permitted, Not Required</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Walz v. Tax Commission</strong> (SCOTUS, 1970, 8-1) — exemptions are constitutionally permitted; taxing churches would ironically create MORE government entanglement with religion, not less. <strong>Texas Monthly v. Bullock</strong> (1989) — exemptions must benefit a broad class, not religion only. <strong>Bob Jones University v. US</strong> (1983) — exemptions can be conditioned on not violating fundamental public policy.</p>
+  <article class="question-item" data-status="green" data-q="27">
+    <div class="question-layout">
+      <div class="question-number">27</div>
+      <div class="question-content">
+        <h2 class="question-title">Is religious tax exemption a right or privilege?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Permitted, Not Required</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Walz v. Tax Commission (1970)</span>
-          <span class="case-pill">Texas Monthly v. Bullock (1989)</span>
-          <span class="case-pill">Bob Jones University v. US (1983)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Walz v. Tax Commission</strong> (SCOTUS, 1970, 8-1) &mdash; exemptions are constitutionally permitted; taxing churches would ironically create MORE government entanglement with religion, not less. The power to tax is the power to destroy, and keeping the state's hand off the church's finances serves both institutions. <strong>Texas Monthly v. Bullock</strong> (1989) &mdash; exemptions must benefit a broad class, not religion only. <strong>Bob Jones University v. US</strong> (1983) &mdash; exemptions can be conditioned on not violating fundamental public policy.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Walz v. Tax Commission (1970)</span>
+                <span class="case-tag">Texas Monthly v. Bullock (1989)</span>
+                <span class="case-tag">Bob Jones University v. US (1983)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q28 -->
-  <div class="question-card" data-status="green" data-q="28">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q28</div>
-      <div class="card-main">
-        <div class="card-question">Should churches be taxed like any other part of society?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>All 50 states exempt church property from property taxes. Churches are automatically exempt from federal income tax under IRC §501(c)(3) without even filing an application. Churches are also exempt from Form 990 filing requirements. The clergy housing allowance was upheld in <strong>Gaylor v. Mnuchin</strong> (7th Cir., 2019). No pending legislation or serious challenges exist.</p>
+  <article class="question-item" data-status="green" data-q="28">
+    <div class="question-layout">
+      <div class="question-number">28</div>
+      <div class="question-content">
+        <h2 class="question-title">Should churches be taxed like any other part of society?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; No</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Walz v. Tax Commission (1970)</span>
-          <span class="case-pill">IRC §501(c)(3)</span>
-          <span class="case-pill">Gaylor v. Mnuchin (7th Cir. 2019)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>All 50 states exempt church property from property taxes — a recognition stretching back to the founding that the church serves a purpose the state cannot replicate and should not burden. Churches are automatically exempt from federal income tax under IRC &sect;501(c)(3) without even filing an application. Churches are also exempt from Form 990 filing requirements, providing protections against the kind of government surveillance of religious activity that the Founders feared. The clergy housing allowance was upheld in <strong>Gaylor v. Mnuchin</strong> (7th Cir., 2019). No pending legislation or serious challenges exist.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Walz v. Tax Commission (1970)</span>
+                <span class="case-tag">IRC &sect;501(c)(3)</span>
+                <span class="case-tag">Gaylor v. Mnuchin (7th Cir. 2019)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q29 -->
-  <div class="question-card" data-status="green" data-q="29">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q29</div>
-      <div class="card-main">
-        <div class="card-question">Can federal labor laws enforce unionization in religious enterprises?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>NLRB v. Catholic Bishop of Chicago</strong> (SCOTUS, 1979, 5-4) — the NLRA does not extend jurisdiction to church-operated schools. <strong>Bethany College</strong> (NLRB, 2020) broadened this: the NLRB now declines jurisdiction over any religious, nonprofit institution. Recent applications: Loyola Marymount (2025), Saint Leo, and Saint Xavier all dissolved faculty unions citing this exemption.</p>
+  <article class="question-item" data-status="green" data-q="29">
+    <div class="question-layout">
+      <div class="question-number">29</div>
+      <div class="question-content">
+        <h2 class="question-title">Can federal labor laws enforce unionization in religious enterprises?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; No</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">NLRB v. Catholic Bishop of Chicago (1979)</span>
-          <span class="case-pill">Bethany College (NLRB 2020)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>NLRB v. Catholic Bishop of Chicago</strong> (SCOTUS, 1979, 5-4) &mdash; the NLRA does not extend jurisdiction to church-operated schools, recognizing that inserting a federal labor board into the governance of a religious institution would raise grave constitutional concerns. <strong>Bethany College</strong> (NLRB, 2020) broadened this: the NLRB now declines jurisdiction over any religious, nonprofit institution. Recent applications: Loyola Marymount (2025), Saint Leo, and Saint Xavier all dissolved faculty unions citing this exemption.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">NLRB v. Catholic Bishop of Chicago (1979)</span>
+                <span class="case-tag">Bethany College (NLRB 2020)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q30 -->
-  <div class="question-card" data-status="green" data-q="30">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q30</div>
-      <div class="card-main">
-        <div class="card-question">Can the state require a license before a ministry solicits funds?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Generally No</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p><strong>Watchtower Bible v. Village of Stratton</strong> (SCOTUS, 2002, 8-1) — permit requirements for canvassing violate the First Amendment. <strong>Cantwell v. Connecticut</strong> (1940) — licensing for religious solicitation is unconstitutional prior restraint on speech. Houses of worship are exempt from charitable solicitation registration requirements in every state.</p>
+  <article class="question-item" data-status="green" data-q="30">
+    <div class="question-layout">
+      <div class="question-number">30</div>
+      <div class="question-content">
+        <h2 class="question-title">Can the state require a license before a ministry solicits funds?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Generally No</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">Watchtower Bible v. Village of Stratton (2002)</span>
-          <span class="case-pill">Cantwell v. Connecticut (1940)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p><strong>Watchtower Bible v. Village of Stratton</strong> (SCOTUS, 2002, 8-1) &mdash; permit requirements for canvassing violate the First Amendment, affirming that the gospel does not need a government license to be shared. <strong>Cantwell v. Connecticut</strong> (1940) &mdash; licensing for religious solicitation is unconstitutional prior restraint on speech. Houses of worship are exempt from charitable solicitation registration requirements in every state.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">Watchtower Bible v. Village of Stratton (2002)</span>
+                <span class="case-tag">Cantwell v. Connecticut (1940)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
   <!-- Q31 -->
-  <div class="question-card" data-status="green" data-q="31">
-    <div class="card-header" onclick="toggleCard(this)">
-      <div class="q-number">Q31</div>
-      <div class="card-main">
-        <div class="card-question">Are religious hospitals, schools, counseling groups, etc. subject to government regulation?</div>
-        <div class="card-meta"><span class="status-badge green">Resolved — Yes, But With Expanding Protections</span></div>
-      </div>
-      <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-body-inner">
-        <div class="section-label">Federal Status</div>
-        <div class="content-block">
-          <p>Religious institutions are subject to neutral health and safety regulations, but a series of landmark rulings has dramatically expanded religious institutional autonomy: <strong>RFRA (1993)</strong>, <strong>RLUIPA (2000)</strong>, <strong>Hobby Lobby</strong> (2014), <strong>Little Sisters of the Poor</strong> (2020), <strong>Fulton v. Philadelphia</strong> (2021), and <strong>Carson v. Makin</strong> (2022) have all reinforced that religious organizations cannot be excluded from government programs based on their religious character or identity.</p>
+  <article class="question-item" data-status="green" data-q="31">
+    <div class="question-layout">
+      <div class="question-number">31</div>
+      <div class="question-content">
+        <h2 class="question-title">Are religious hospitals, schools, counseling groups, etc. subject to government regulation?</h2>
+        <div class="question-meta">
+          <span class="status-pill green">Resolved &mdash; Yes, But With Expanding Protections</span>
         </div>
-        <div class="section-label">Key Cases</div>
-        <div class="cases-grid">
-          <span class="case-pill">RFRA (1993)</span>
-          <span class="case-pill">RLUIPA (2000)</span>
-          <span class="case-pill">Hobby Lobby (2014)</span>
-          <span class="case-pill">Fulton v. Philadelphia (2021)</span>
-          <span class="case-pill">Carson v. Makin (2022)</span>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <div class="question-body">
+          <div class="question-body-inner">
+            <div class="body-section">
+              <div class="body-section-label">Federal Status</div>
+              <div class="body-text">
+                <p>Religious institutions are subject to neutral health and safety regulations, but a series of landmark rulings has dramatically expanded religious institutional autonomy — each affirming that the church serves a purpose the state cannot replicate. <strong>RFRA (1993)</strong>, <strong>RLUIPA (2000)</strong>, <strong>Hobby Lobby</strong> (2014), <strong>Little Sisters of the Poor</strong> (2020), <strong>Fulton v. Philadelphia</strong> (2021), and <strong>Carson v. Makin</strong> (2022) have all reinforced that religious organizations cannot be excluded from the public square simply because they are religious.</p>
+              </div>
+            </div>
+            <div class="body-section">
+              <div class="body-section-label">Key Cases</div>
+              <div class="cases-list">
+                <span class="case-tag">RFRA (1993)</span>
+                <span class="case-tag">RLUIPA (2000)</span>
+                <span class="case-tag">Hobby Lobby (2014)</span>
+                <span class="case-tag">Fulton v. Philadelphia (2021)</span>
+                <span class="case-tag">Carson v. Makin (2022)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </article>
 
 </main>
 
 <!-- TIMELINE -->
 <section class="timeline-section">
-  <h2 class="section-heading">Key Turning Points</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <span class="timeline-year">1984</span>
-      <span class="timeline-desc"><strong>Equal Access Act</strong> — student religious groups guaranteed equal campus access (Q3)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">1988</span>
-      <span class="timeline-desc"><strong>Nally v. Grace Community Church</strong> — clergy malpractice definitively rejected (Q1)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">1990</span>
-      <span class="timeline-desc"><strong>Board of Education v. Mergens</strong> — Equal Access Act upheld 8-1 (Q3)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">1993</span>
-      <span class="timeline-desc"><strong>Religious Freedom Restoration Act</strong> — RFRA enacted, reshaping religious liberty landscape (Q6, Q10, Q11, Q31)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2000</span>
-      <span class="timeline-desc"><strong>RLUIPA</strong> — Religious Land Use and Institutionalized Persons Act enacted (Q7, Q13, Q16)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2012</span>
-      <span class="timeline-desc"><strong>Hosanna-Tabor v. EEOC</strong> — Ministerial exception recognized unanimously (Q10, Q11, Q15)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2019</span>
-      <span class="timeline-desc"><strong>American Legion v. AHA</strong> — Presumption of constitutionality for longstanding religious displays (Q12)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2020</span>
-      <span class="timeline-desc"><strong>Our Lady of Guadalupe</strong> — Ministerial exception extended broadly to religious school teachers (Q15) · <strong>Bostock v. Clayton County</strong> — Title VII covers sexual orientation, creating church/state tension (Q10)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2022</span>
-      <span class="timeline-desc"><strong>Dobbs v. Jackson</strong> — Roe v. Wade overturned, personhood question returned to states (Q19) · <strong>Kennedy v. Bremerton</strong> — Lemon test eliminated (Q4, Q12, Q20, Q21)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2023</span>
-      <span class="timeline-desc"><strong>Groff v. DeJoy</strong> — Unanimous SCOTUS ruling dramatically strengthens Sabbath accommodation (Q23)</span>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-year">2026</span>
-      <span class="timeline-desc"><strong>Roake v. Brumley</strong> (5th Cir.) — Louisiana Ten Commandments law becomes enforceable (Q20)</span>
+  <div class="timeline-inner">
+    <h2 class="section-headline">Key Turning Points Since Schaeffer Wrote</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-year">1984</span>
+        <span class="timeline-desc"><strong>Equal Access Act</strong> &mdash; student religious groups guaranteed equal campus access (Q3)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1988</span>
+        <span class="timeline-desc"><strong>Nally v. Grace Community Church</strong> &mdash; clergy malpractice definitively rejected (Q1)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1990</span>
+        <span class="timeline-desc"><strong>Board of Education v. Mergens</strong> &mdash; Equal Access Act upheld 8-1 (Q3)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1993</span>
+        <span class="timeline-desc"><strong>Religious Freedom Restoration Act</strong> &mdash; RFRA enacted, reshaping religious liberty landscape (Q6, Q10, Q11, Q31)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2000</span>
+        <span class="timeline-desc"><strong>RLUIPA</strong> &mdash; Religious Land Use and Institutionalized Persons Act enacted (Q7, Q13, Q16)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2012</span>
+        <span class="timeline-desc"><strong>Hosanna-Tabor v. EEOC</strong> &mdash; Ministerial exception recognized unanimously (Q10, Q11, Q15)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2019</span>
+        <span class="timeline-desc"><strong>American Legion v. AHA</strong> &mdash; Presumption of constitutionality for longstanding religious displays (Q12)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <span class="timeline-desc"><strong>Our Lady of Guadalupe</strong> &mdash; Ministerial exception extended broadly to religious school teachers (Q15) &middot; <strong>Bostock v. Clayton County</strong> &mdash; Title VII covers sexual orientation, creating church/state tension (Q10)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2022</span>
+        <span class="timeline-desc"><strong>Dobbs v. Jackson</strong> &mdash; Roe v. Wade overturned, personhood question returned to states (Q19) &middot; <strong>Kennedy v. Bremerton</strong> &mdash; Lemon test eliminated (Q4, Q12, Q20, Q21)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2023</span>
+        <span class="timeline-desc"><strong>Groff v. DeJoy</strong> &mdash; Unanimous SCOTUS ruling dramatically strengthens Sabbath accommodation (Q23)</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2026</span>
+        <span class="timeline-desc"><strong>Roake v. Brumley</strong> (5th Cir.) &mdash; Louisiana Ten Commandments law becomes enforceable (Q20)</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>Monday Men &mdash; Chapter 6 Research</strong></p>
-  <p>&ldquo;A Christian Manifesto&rdquo; by Francis A. Schaeffer (1981) &middot; Chapter: &ldquo;An Open Window,&rdquo; pp. 83&ndash;85 &middot; Questions compiled by Attorney Robert L. Toms</p>
-  <p style="margin-top:8px;font-size:12px;">Current Legal Status Report &mdash; April 2026</p>
-  <p style="margin-top:12px; font-size:12px;">This document is for research and educational purposes. It is not legal advice. Consult qualified legal counsel for specific situations.</p>
+  <div class="footer-inner">
+    <p><strong>Monday Men &mdash; Chapter 6 Research</strong></p>
+    <p>&ldquo;A Christian Manifesto&rdquo; by Francis A. Schaeffer (1981) &middot; Chapter: &ldquo;An Open Window,&rdquo; pp. 83&ndash;85 &middot; Questions compiled by Attorney Robert L. Toms</p>
+    <p>Where these questions stand forty-five years later &mdash; April 2026</p>
+    <p class="disclaimer">This research is for educational purposes and group discussion. It is not legal advice. Churches and ministries facing specific situations should consult qualified legal counsel.</p>
+  </div>
 </footer>
 
 <!-- BACK TO TOP -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
 
 <script>
-// Card toggle
-function toggleCard(header) {
-  const card = header.closest('.question-card');
-  const isOpen = card.classList.contains('open');
-  card.classList.toggle('open', !isOpen);
+// ── QUESTION TOGGLE ──
+function toggleQuestion(btn) {
+  const item = btn.closest('.question-item');
+  const isOpen = item.classList.contains('open');
+  item.classList.toggle('open', !isOpen);
+  btn.querySelector('.arrow').textContent = isOpen ? '\u2964' : '\u2963';
   if (!isOpen) {
-    card.classList.add('read');
-    updateProgress();
+    item.classList.add('read');
+    updateReadCount();
   }
 }
 
-// State section toggle
-function toggleState(toggle) {
-  toggle.classList.toggle('open');
+// ── STATE ACCORDION TOGGLE ──
+function toggleState(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
 }
 
-// Progress tracker
-function updateProgress() {
-  const total = document.querySelectorAll('.question-card').length;
-  const read = document.querySelectorAll('.question-card.read').length;
-  document.getElementById('progress-text').textContent = read + ' of ' + total + ' read';
-  document.getElementById('progress-bar').style.width = (read / total * 100) + '%';
+// ── READ COUNT ──
+function updateReadCount() {
+  const total = document.querySelectorAll('.question-item').length;
+  const read = document.querySelectorAll('.question-item.read').length;
+  const el = document.getElementById('readCount');
+  if (read > 0 && el) {
+    el.textContent = read + ' of ' + total + ' read';
+  }
 }
 
-// Filter buttons
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+// ── FILTER TABS ──
+document.querySelectorAll('.filter-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.filter-tab').forEach(function(t) {
+      t.classList.remove('active');
+    });
     this.classList.add('active');
-    const filter = this.dataset.filter;
-    document.querySelectorAll('.question-card').forEach(card => {
-      if (filter === 'all' || card.dataset.status === filter) {
-        card.removeAttribute('data-hidden');
+    var filter = this.dataset.filter;
+    document.querySelectorAll('.question-item').forEach(function(item) {
+      if (filter === 'all' || item.dataset.status === filter) {
+        item.removeAttribute('data-hidden');
       } else {
-        card.setAttribute('data-hidden', 'true');
-        card.classList.remove('open');
+        item.setAttribute('data-hidden', 'true');
+        item.classList.remove('open');
       }
     });
   });
 });
 
-// Back to top
-const btt = document.getElementById('backToTop');
+// ── SCROLL PROGRESS ──
+// Uses document.documentElement.clientHeight as the viewport measure because
+// window.innerHeight on iOS Safari includes the collapsing toolbar height and
+// can make the denominator wrong when the bar is visible vs. hidden.
+var progressBar = document.getElementById('scrollProgress');
+var backToTopBtn = document.getElementById('backToTop');
 window.addEventListener('scroll', function() {
-  btt.classList.toggle('visible', window.scrollY > 400);
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  // clientHeight is the actual rendered viewport — stable on iOS Safari
+  var viewportH = document.documentElement.clientHeight;
+  var docHeight = document.documentElement.scrollHeight - viewportH;
+  var pct = docHeight > 0 ? (scrollTop / docHeight * 100) : 0;
+  progressBar.style.width = Math.min(pct, 100) + '%';
+
+  // Back to top
+  backToTopBtn.classList.toggle('visible', scrollTop > 400);
 }, { passive: true });
 </script>
 </body>
