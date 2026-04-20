@@ -238,7 +238,7 @@ body {
   border-radius: 100px;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
@@ -246,6 +246,11 @@ body {
   color: var(--text);
   border-color: var(--border-mid);
   background: color-mix(in srgb, var(--border) 40%, var(--bg));
+  transform: scale(1.02);
+}
+.filter-tab:active {
+  transform: scale(0.96);
+  transition: all 0.1s ease;
 }
 .filter-tab.active {
   color: #fff;
@@ -371,37 +376,33 @@ body {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .read-more-btn:hover {
   background: color-mix(in srgb, var(--border) 40%, var(--bg));
   border-color: var(--border-mid);
   color: var(--text);
+  transform: scale(1.01);
+}
+.read-more-btn:active {
+  transform: scale(0.98);
+  transition: all 0.1s ease;
 }
 .question-item.open .read-more-btn {
   background: color-mix(in srgb, var(--accent-light) 80%, var(--bg));
   border-color: var(--accent-mid);
   color: var(--accent);
 }
-.read-more-btn .arrow {
-  display: inline-block;
-  transition: transform 0.2s ease;
-  font-style: normal;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-.question-item.open .read-more-btn .arrow {
-  transform: rotate(180deg);
-}
-
 /* ── EXPANDED BODY ── */
 .question-body {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
 }
 .question-item.open .question-body {
   max-height: 6000px;
+  opacity: 1;
 }
 .question-body-inner {
   padding-top: 24px;
@@ -488,27 +489,28 @@ body {
   text-align: left;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .state-accordion-trigger:hover {
   background: color-mix(in srgb, var(--border) 50%, var(--bg));
   color: var(--text);
 }
-.state-accordion-trigger .chevron-icon {
-  flex-shrink: 0;
-  color: var(--text-3);
-  transition: transform 0.2s ease;
+.state-accordion-trigger:active {
+  transform: scale(0.98);
+  transition: all 0.1s ease;
 }
-.state-accordion.open .state-accordion-trigger .chevron-icon {
-  transform: rotate(180deg);
+.state-accordion-trigger .chevron-icon {
+  display: none;
 }
 .state-accordion-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 .state-accordion.open .state-accordion-body {
   max-height: 2000px;
+  opacity: 1;
 }
 .state-accordion-inner {
   padding: 16px;
@@ -856,7 +858,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; No Liability</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -895,7 +897,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; Yes in Principle</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -929,7 +931,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -961,7 +963,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes, With Boundaries</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -993,7 +995,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1027,7 +1029,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Depends on Federal Funding</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1061,7 +1063,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Generally Yes</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1092,7 +1094,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; Generally No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1149,7 +1151,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill red">Resolved Against &mdash; No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1180,7 +1182,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill amber">In Flux &mdash; Partially Resolved</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1239,7 +1241,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1271,7 +1273,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Almost Certainly Yes</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1303,7 +1305,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; No, But Friction Persists</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1336,7 +1338,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; Property Yes, Doctrine No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1394,7 +1396,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1426,7 +1428,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; Nuanced</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1459,7 +1461,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; Generally Yes, But Patchwork</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1512,7 +1514,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Depends on Forum Type</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1543,7 +1545,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill amber">In Flux &mdash; Most Actively Contested</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1602,7 +1604,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill amber">In Flux &mdash; Actively Re-Litigated</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1660,7 +1662,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes, If Facially Neutral</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1716,7 +1718,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes, As Education</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1748,7 +1750,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Strongly Yes</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1779,7 +1781,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill amber">In Flux &mdash; Genuinely Unsettled</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1811,7 +1813,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Clearly No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1843,7 +1845,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill blue">Largely Resolved &mdash; Yes, With Limits</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1904,7 +1906,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Permitted, Not Required</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1936,7 +1938,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1968,7 +1970,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -1999,7 +2001,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Generally No</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -2030,7 +2032,7 @@ footer .disclaimer {
         <div class="question-meta">
           <span class="status-pill green">Resolved &mdash; Yes, But With Expanding Protections</span>
         </div>
-        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis <span class="arrow">&#8964;</span></button>
+        <button class="read-more-btn" onclick="toggleQuestion(this)">Read full analysis</button>
         <div class="question-body">
           <div class="question-body-inner">
             <div class="body-section">
@@ -2128,7 +2130,7 @@ function toggleQuestion(btn) {
   const item = btn.closest('.question-item');
   const isOpen = item.classList.contains('open');
   item.classList.toggle('open', !isOpen);
-  btn.querySelector('.arrow').textContent = isOpen ? '\u2964' : '\u2963';
+  btn.textContent = isOpen ? 'Read full analysis' : 'Close';
   if (!isOpen) {
     item.classList.add('read');
     updateReadCount();
